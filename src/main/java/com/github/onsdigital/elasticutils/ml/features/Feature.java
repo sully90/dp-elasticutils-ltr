@@ -2,7 +2,13 @@ package com.github.onsdigital.elasticutils.ml.features;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.junit.Assert;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +19,15 @@ import java.util.Map;
  * Simple feature for Elasticsearch LTR
  */
 public class Feature {
+
+    @JsonIgnore
+    public static final String[] DEFAULT_PARAMS;
+
+    static {
+        DEFAULT_PARAMS = new String[] {
+                "keywords"
+        };
+    }
 
     private String name;
     private List<String> params;
@@ -52,5 +67,18 @@ public class Feature {
 
     public Map<String, Object> getTemplate() {
         return template;
+    }
+
+    public static Feature matchFeature(String name, String field) throws IOException {
+        return matchFeature(name, field, DEFAULT_PARAMS);
+    }
+
+    public static Feature matchFeature(String name, String field, String[] params) throws IOException {
+        // Example of a simple match field feature
+        QueryBuilder qb = QueryBuilders.matchQuery(field, "{{keywords}}");
+        Map<String, Object> template = LearnToRankHelper.templateMapFromQueryBuilder(qb);
+
+        Feature feature = new Feature(name, Arrays.asList(params), template);
+        return feature;
     }
 }

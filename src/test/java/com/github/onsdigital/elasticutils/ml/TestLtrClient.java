@@ -60,28 +60,22 @@ public class TestLtrClient {
     }
 
     @Test
-    public void testFeaturesetCreation() {
-        QueryBuilder qb = QueryBuilders.matchQuery("title", "{{keywords}}");
-        Map<String, Object> template = null;
+    public void testFeatureSetCreation() {
+        String name = "match_query";
+        String field = "title";
+
+        Feature feature = null;
+        Feature newFeature = null;
         try {
-            template = LearnToRankHelper.templateMapFromQueryBuilder(qb);
+            feature = Feature.matchFeature(name, field);
+            newFeature = Feature.matchFeature(name + "_new", field);
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         }
-
-        String name = "match_query";
-        String[] params = new String[] {
-          "keywords"
-        };
-        Feature feature = new Feature(name, Arrays.asList(params), template);
-        List<Feature> features = new ArrayList<Feature>() {{
-           add(feature);
-        }};
-
-        Feature newFeature = new Feature(name + "_new", Arrays.asList(params), template);
-        List<Feature> newFeatures = new ArrayList<Feature>() {{
-            add(newFeature);
-        }};
+        List<Feature> features = new ArrayList<Feature>();
+        List<Feature> newFeatures = new ArrayList<Feature>();
+        features.add(feature);
+        newFeatures.add(newFeature);
 
         FeatureSet featureSet = new FeatureSet("java-test-feature-set", features);
         FeatureSetRequest request = new FeatureSetRequest(featureSet);
@@ -94,6 +88,7 @@ public class TestLtrClient {
 
         try (LearnToRankClient client = getClient()) {
             client.addFeatureSet(request);
+
             LearnToRankGetResponse response = client.getFeatureSetByName(request.getName());
             assertEquals(response.getSource().getFeatureSet(), request.getFeatureSet());
 
