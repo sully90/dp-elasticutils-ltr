@@ -1,7 +1,10 @@
 package com.github.onsdigital.elasticutils.ml.features;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,22 +17,24 @@ import java.util.List;
  */
 public class FeatureSet {
 
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
     private List<Feature> featureList;
 
-    public FeatureSet(String name) {
-        this.name = name;
+    private FeatureSet() {
         this.featureList = new ArrayList<>();
+    }
+
+    public FeatureSet(String name) {
+        this();
+        this.name = name;
     }
 
     public FeatureSet(String name, List<Feature> featureList) {
         this.name = name;
         this.featureList = featureList;
-    }
-
-    private FeatureSet() {
-        // For Jackson
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -40,6 +45,11 @@ public class FeatureSet {
     @JsonProperty("features")
     public List<Feature> getFeatureList() {
         return featureList;
+    }
+
+    @JsonIgnore
+    public String toJson() throws JsonProcessingException {
+        return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);
     }
 
     @Override

@@ -78,6 +78,11 @@ public class TestLtrClient {
            add(feature);
         }};
 
+        Feature newFeature = new Feature(name + "_new", Arrays.asList(params), template);
+        List<Feature> newFeatures = new ArrayList<Feature>() {{
+            add(newFeature);
+        }};
+
         FeatureSet featureSet = new FeatureSet("java-test-feature-set", features);
         FeatureSetRequest request = new FeatureSetRequest(featureSet);
 
@@ -91,6 +96,18 @@ public class TestLtrClient {
             client.addFeatureSet(request);
             LearnToRankGetResponse response = client.getFeatureSetByName(request.getName());
             assertEquals(response.getSource().getFeatureSet(), request.getFeatureSet());
+
+            // Assert we only have one feature
+            assertEquals(response.getSource().getFeatureSet().getFeatureList().size(), 1);
+
+            // Add a new feature
+            client.addToFeatureSet(request.getName(), newFeatures);
+            // Perform the GET again
+            response = client.getFeatureSetByName(request.getName());
+            // Assert the new feature was added
+            assertEquals(response.getSource().getFeatureSet().getFeatureList().size(), 2);
+
+            // Delete
             client.deleteFeatureSetByName(request.getName());
         } catch (IOException e) {
             Assert.fail(e.getMessage());

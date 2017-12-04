@@ -2,6 +2,8 @@ package com.github.onsdigital.elasticutils.ml.client.http;
 
 import com.github.onsdigital.elasticutils.ml.client.http.response.LearnToRankGetResponse;
 import com.github.onsdigital.elasticutils.ml.client.http.response.LearnToRankListResponse;
+import com.github.onsdigital.elasticutils.ml.features.Feature;
+import com.github.onsdigital.elasticutils.ml.features.FeatureSet;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
@@ -19,6 +21,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -129,6 +132,14 @@ public class LearnToRankClient implements AutoCloseable {
         return this.put(api, Collections.emptyMap(), request.toJson());
     }
 
+    public Response addToFeatureSet(String name, List<Feature> featureList) throws IOException {
+        String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), name, LearnToRankEndPoint.ADD_FEATURES.getEndPoint());
+        FeatureSet featureSet = new FeatureSet(null, featureList);
+
+        String json = featureSet.toJson();
+        return this.post(api, Collections.emptyMap(), json);
+    }
+
     @Override
     public void close() throws Exception {
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Closing RestClient");
@@ -168,7 +179,8 @@ public class LearnToRankClient implements AutoCloseable {
     }
 
     enum LearnToRankEndPoint {
-        FEATURESET("_featureset");
+        FEATURESET("_featureset"),
+        ADD_FEATURES("_addfeatures");
 
         private String endPoint;
 
