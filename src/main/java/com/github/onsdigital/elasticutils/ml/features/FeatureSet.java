@@ -23,10 +23,6 @@ public class FeatureSet {
         this.featureList = new ArrayList<>();
     }
 
-    public FeatureSet(List<Feature> featureList) {
-        this.featureList = featureList;
-    }
-
     public FeatureSet(String name, List<Feature> featureList) {
         this.name = name;
         this.featureList = featureList;

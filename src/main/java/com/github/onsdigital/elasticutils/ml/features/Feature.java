@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author sullid (David Sullivan) on 23/11/2017
@@ -16,16 +17,16 @@ public class Feature {
     private String name;
     private List<String> params;
     private String templateLanguage;
-    private Template template;
+    private Map<String, Object> template;
 
     @JsonIgnore
     private static final String DEFAULT_TEMPLATING_LANGUAGE = "mustache";
 
-    public Feature (String name, List<String> params, Template template) {
+    public Feature (String name, List<String> params, Map<String, Object> template) {
         this(name, params, DEFAULT_TEMPLATING_LANGUAGE, template);
     }
 
-    public Feature(String name, List<String> params, String templateLanguage, Template template) {
+    public Feature(String name, List<String> params, String templateLanguage, Map<String, Object> template) {
         this.name = name;
         this.params = params;
         this.templateLanguage = templateLanguage;
@@ -49,7 +50,7 @@ public class Feature {
         return templateLanguage;
     }
 
-    public Template getTemplate() {
+    public Map<String, Object> getTemplate() {
         return template;
     }
 }

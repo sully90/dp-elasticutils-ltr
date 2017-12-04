@@ -112,7 +112,7 @@ public class LeanToRankClient extends SimpleRestClient {
             LearnToRankResponse learnToRankResponse = LeanToRankClient.MAPPER.readValue(content, LearnToRankResponse.class);
             LearnToRankHits hits = learnToRankResponse.getHits();
             FeatureSet featureSet = hits.getHits().get(0).getFeatureSet();
-            System.out.println(featureSet);
+            System.out.println(featureSet.getFeatureList().get(0).getTemplate());
         } catch (IOException e) {
             e.printStackTrace();
         }
