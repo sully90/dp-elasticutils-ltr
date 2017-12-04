@@ -5,9 +5,11 @@ import com.github.onsdigital.elasticutils.ml.client.http.response.LearnToRankLis
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
 import org.apache.http.nio.entity.NStringEntity;
 import org.elasticsearch.client.Response;
+import org.elasticsearch.client.ResponseException;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.common.Strings;
@@ -52,6 +54,20 @@ public class LearnToRankClient implements AutoCloseable {
 
     public Response delete(String apiEndPoint, Map<String, String> params) throws IOException {
         return this.restClient.performRequest(HttpMethod.DELETE.method(), apiEndPoint, params);
+    }
+
+    public boolean featureStoreExists() throws IOException {
+        String api = endpoint(LearnToRankEndPoint.FEATURESET);
+        try {
+            Response response = this.get(api, Collections.emptyMap());
+            return response.getStatusLine().getStatusCode() == HttpStatus.SC_OK;
+        } catch (ResponseException e) {
+            if (e.getResponse().getStatusLine().getStatusCode() == HttpStatus.SC_NOT_FOUND) {
+                return false;
+            } else {
+                throw new IOException(e);
+            }
+        }
     }
 
     /**
@@ -164,7 +180,8 @@ public class LearnToRankClient implements AutoCloseable {
         try (LearnToRankClient client = LearnToRankHelper.getLTRClient("localhost")) {
 //            client.dropFeatureStore();
 //            client.initFeatureStore();
-            System.out.println(client.getFeatureSetByName("test_more_movie_features").getSource().toJson());
+//            System.out.println(client.getFeatureSetByName("test_more_movie_features").getSource().toJson());
+            System.out.println(client.featureStoreExists());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {

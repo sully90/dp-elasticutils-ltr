@@ -20,7 +20,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * @author sullid (David Sullivan) on 04/12/2017
@@ -37,8 +39,11 @@ public class TestLtrClient {
     @Before
     public void initFeatureStore() {
         try (LearnToRankClient client = getClient()) {
-            client.dropFeatureStore();
+            if (client.featureStoreExists()) {
+                client.dropFeatureStore();
+            }
             client.initFeatureStore();
+            assertTrue(client.featureStoreExists());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
@@ -48,6 +53,7 @@ public class TestLtrClient {
     public void dropFeatureStore() {
         try (LearnToRankClient client = getClient()) {
             client.dropFeatureStore();
+            assertFalse(client.featureStoreExists());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
