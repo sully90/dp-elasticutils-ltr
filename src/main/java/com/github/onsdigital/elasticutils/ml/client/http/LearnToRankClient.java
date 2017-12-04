@@ -65,6 +65,7 @@ public class LearnToRankClient implements AutoCloseable {
             if (e.getResponse().getStatusLine().getStatusCode() == HttpStatus.SC_NOT_FOUND) {
                 return false;
             } else {
+                LOGGER.error("Error checking if featureStore exists", e);
                 throw new IOException(e);
             }
         }
@@ -78,6 +79,10 @@ public class LearnToRankClient implements AutoCloseable {
      * Initialise the default feature store
      */
     public Response initFeatureStore() throws IOException {
+        if (this.featureStoreExists()) {
+            LOGGER.debug("Attempt to init FeatureStore which already exists.");
+            throw new RuntimeException("FeatureStore already exists");
+        }
         return this.restClient.performRequest(HttpMethod.PUT.method(), LTR_INDEX, Collections.emptyMap());
     }
 
@@ -120,7 +125,7 @@ public class LearnToRankClient implements AutoCloseable {
 
     public Response addFeatureSet(FeatureSetRequest request) throws IOException {
         String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), request.getName());
-        LOGGER.info("Adding featureset with name {} : {}", request.getName(), api);
+        if (LOGGER.isDebugEnabled()) LOGGER.debug("Adding featureset with name {} : {}", request.getName(), api);
         return this.put(api, Collections.emptyMap(), request.toJson());
     }
 
