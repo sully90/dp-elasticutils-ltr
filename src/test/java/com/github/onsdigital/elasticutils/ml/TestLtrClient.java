@@ -36,29 +36,6 @@ public class TestLtrClient {
         return LearnToRankHelper.getLTRClient(HOSTNAME);
     }
 
-    @Before
-    public void initFeatureStore() {
-        try (LearnToRankClient client = getClient()) {
-            if (client.featureStoreExists()) {
-                client.dropFeatureStore();
-            }
-            client.initFeatureStore();
-            assertTrue(client.featureStoreExists());
-        } catch (Exception e) {
-            Assert.fail(e.getMessage());
-        }
-    }
-
-    @After
-    public void dropFeatureStore() {
-        try (LearnToRankClient client = getClient()) {
-            client.dropFeatureStore();
-            assertFalse(client.featureStoreExists());
-        } catch (Exception e) {
-            Assert.fail(e.getMessage());
-        }
-    }
-
     @Test
     public void testFeatureSetCreation() {
         String name = "match_query";
@@ -87,6 +64,11 @@ public class TestLtrClient {
         }
 
         try (LearnToRankClient client = getClient()) {
+            boolean featureStoreExists = client.featureStoreExists();
+
+            if (!featureStoreExists) {
+                client.initFeatureStore();
+            }
             client.addFeatureSet(request);
 
             LearnToRankGetResponse response = client.getFeatureSetByName(request.getName());
@@ -104,6 +86,11 @@ public class TestLtrClient {
 
             // Delete
             client.deleteFeatureSetByName(request.getName());
+
+            if (!featureStoreExists) {
+                // Cleanup
+                client.dropFeatureStore();
+            }
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         } catch (Exception e) {
