@@ -19,9 +19,6 @@ public class FeatureSetRequest {
     private Validation validation;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String name;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String type;
 
     @JsonIgnore
@@ -63,8 +60,9 @@ public class FeatureSetRequest {
         this.validation = validation;
     }
 
+    @JsonIgnore
     public String getName() {
-        return name;
+        return this.featureSet.getName();
     }
 
     public String getType() {

@@ -2,14 +2,17 @@ package com.github.onsdigital.elasticutils.ml.client.http.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.util.EntityUtils;
+import org.elasticsearch.client.Response;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
  * @author sullid (David Sullivan) on 30/11/2017
  * @project dp-elasticutils-ltr
  */
-public class LearnToRankResponse {
+public class LearnToRankListResponse {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -20,7 +23,13 @@ public class LearnToRankResponse {
     private Map<String, Object> shards;
     private LearnToRankHits hits;
 
-    protected LearnToRankResponse() {
+    public static LearnToRankListResponse fromResponse(Response response) throws IOException {
+        String json = EntityUtils.toString(response.getEntity());
+        LearnToRankListResponse learnToRankResponse = MAPPER.readValue(json, LearnToRankListResponse.class);
+        return learnToRankResponse;
+    }
+
+    protected LearnToRankListResponse() {
 
     }
 

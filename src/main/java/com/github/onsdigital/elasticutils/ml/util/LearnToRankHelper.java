@@ -2,7 +2,7 @@ package com.github.onsdigital.elasticutils.ml.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.onsdigital.elasticutils.ml.client.http.LeanToRankClient;
+import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
 import org.apache.http.message.BasicHeader;
@@ -26,11 +26,11 @@ public class LearnToRankHelper {
 
     public static final int DEFAULT_HTTP_PORT = 9200;
 
-    public static LeanToRankClient getLTRClient(String hostName) {
+    public static LearnToRankClient getLTRClient(String hostName) {
         return getLTRClient(hostName, DEFAULT_HTTP_PORT);
     }
 
-    public static LeanToRankClient getLTRClient(String hostName, int http_port) {
+    public static LearnToRankClient getLTRClient(String hostName, int http_port) {
         LOGGER.info("Attempting to make HTTP connection to ES database: {} {}", hostName, http_port);
 
         // Set some basic headers for all requests
@@ -39,7 +39,7 @@ public class LearnToRankHelper {
         RestClientBuilder builder = RestClient.builder(new HttpHost(hostName, http_port))
                 .setDefaultHeaders(headers);
 
-        LeanToRankClient client = new LeanToRankClient(builder);
+        LearnToRankClient client = new LearnToRankClient(builder);
 
         LOGGER.info("Successfully made HTTP connection to ES database: {} {}", hostName, http_port);
         return client;

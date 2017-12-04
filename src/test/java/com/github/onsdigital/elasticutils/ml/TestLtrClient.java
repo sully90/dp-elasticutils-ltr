@@ -1,6 +1,7 @@
 package com.github.onsdigital.elasticutils.ml;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
 import com.github.onsdigital.elasticutils.ml.features.Feature;
 import com.github.onsdigital.elasticutils.ml.features.FeatureSet;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
@@ -22,6 +23,12 @@ import java.util.Map;
  */
 public class TestLtrClient {
 
+    private static final String HOSTNAME = "localhost";
+
+    public LearnToRankClient getClient() {
+        return LearnToRankHelper.getLTRClient(HOSTNAME);
+    }
+
     @Test
     public void testFeaturesetCreation() {
         QueryBuilder qb = QueryBuilders.matchQuery("title", "{{keywords}}");
@@ -41,12 +48,20 @@ public class TestLtrClient {
            add(feature);
         }};
 
-        FeatureSet featureSet = new FeatureSet("title_query", features);
+        FeatureSet featureSet = new FeatureSet("java-test-feature-set", features);
         FeatureSetRequest request = new FeatureSetRequest(featureSet);
 
         try {
             System.out.println(request.toJson());
         } catch (JsonProcessingException e) {
+            Assert.fail(e.getMessage());
+        }
+
+        try (LearnToRankClient client = getClient()) {
+            client.addFeatureSet(request);
+        } catch (IOException e) {
+            Assert.fail(e.getMessage());
+        } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
     }
