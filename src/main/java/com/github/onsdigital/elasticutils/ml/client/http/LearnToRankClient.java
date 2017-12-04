@@ -1,7 +1,6 @@
 package com.github.onsdigital.elasticutils.ml.client.http;
 
 import com.github.onsdigital.elasticutils.ml.client.http.response.LearnToRankGetResponse;
-import com.github.onsdigital.elasticutils.ml.client.http.response.LearnToRankHit;
 import com.github.onsdigital.elasticutils.ml.client.http.response.LearnToRankListResponse;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
@@ -88,6 +87,11 @@ public class LearnToRankClient implements AutoCloseable {
     public LearnToRankGetResponse getFeatureSetByName(String name) throws IOException {
         String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
         return LearnToRankGetResponse.fromResponse(this.get(api, Collections.emptyMap()));
+    }
+
+    public Response deleteFeatureSetByName(String name) throws IOException {
+        String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
+        return this.delete(api, Collections.emptyMap());
     }
 
     public LearnToRankListResponse listFeatureSets() throws IOException {

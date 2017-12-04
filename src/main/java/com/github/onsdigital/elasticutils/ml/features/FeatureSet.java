@@ -41,4 +41,18 @@ public class FeatureSet {
     public List<Feature> getFeatureList() {
         return featureList;
     }
+
+    @Override
+    public int hashCode() {
+        return this.getName().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof FeatureSet) {
+            FeatureSet otherFeatureSet = (FeatureSet) other;
+            return (otherFeatureSet.getName().equals(this.getName()));
+        }
+        return false;
+    }
 }

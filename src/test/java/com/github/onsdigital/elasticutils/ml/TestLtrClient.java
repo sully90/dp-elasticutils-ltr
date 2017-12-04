@@ -2,13 +2,16 @@ package com.github.onsdigital.elasticutils.ml;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
+import com.github.onsdigital.elasticutils.ml.client.http.response.LearnToRankGetResponse;
 import com.github.onsdigital.elasticutils.ml.features.Feature;
 import com.github.onsdigital.elasticutils.ml.features.FeatureSet;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -16,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author sullid (David Sullivan) on 04/12/2017
@@ -27,6 +32,25 @@ public class TestLtrClient {
 
     public LearnToRankClient getClient() {
         return LearnToRankHelper.getLTRClient(HOSTNAME);
+    }
+
+    @Before
+    public void initFeatureStore() {
+        try (LearnToRankClient client = getClient()) {
+            client.dropFeatureStore();
+            client.initFeatureStore();
+        } catch (Exception e) {
+            Assert.fail(e.getMessage());
+        }
+    }
+
+    @After
+    public void dropFeatureStore() {
+        try (LearnToRankClient client = getClient()) {
+            client.dropFeatureStore();
+        } catch (Exception e) {
+            Assert.fail(e.getMessage());
+        }
     }
 
     @Test
@@ -59,6 +83,9 @@ public class TestLtrClient {
 
         try (LearnToRankClient client = getClient()) {
             client.addFeatureSet(request);
+            LearnToRankGetResponse response = client.getFeatureSetByName(request.getName());
+            assertEquals(response.getSource().getFeatureSet(), request.getFeatureSet());
+            client.deleteFeatureSetByName(request.getName());
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         } catch (Exception e) {

@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bfd6f53-8793-492f-8c87-f9d7fd1ea245" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankGetResponse.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/client/http/LeanToRankClient$LearnToRankEndPoint.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/client/http/LeanToRankClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankResponse.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LeanToRankClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankListResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHit.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest$FeatureSetRequestBuilder.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest$FeatureSetRequestBuilder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/util/LearnToRankHelper.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigital/elasticutils/ml/util/LearnToRankHelper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/github/onsdigital/elasticutils/ml/TestLtrClient$1.class" afterPath="$PROJECT_DIR$/target/test-classes/com/github/onsdigital/elasticutils/ml/TestLtrClient$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/github/onsdigital/elasticutils/ml/TestLtrClient.class" afterPath="$PROJECT_DIR$/target/test-classes/com/github/onsdigital/elasticutils/ml/TestLtrClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHit.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/LearnToRankHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/LearnToRankHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/FeatureSet.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/FeatureSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" afterPath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,15 +17,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="162" column="106" lean-forward="false" selection-start-line="162" selection-start-column="106" selection-end-line="162" selection-end-column="106" />
+            <state relative-caret-position="393">
+              <caret line="93" column="56" lean-forward="false" selection-start-line="93" selection-start-column="56" selection-end-line="93" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1396#1397#0" expanded="true" />
-                <element signature="e#1455#1456#0" expanded="true" />
+                <element signature="e#1314#1315#0" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,15 +64,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestLtrClient.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestLtrClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="50" column="69" lean-forward="false" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
+            <state relative-caret-position="313">
+              <caret line="87" column="23" lean-forward="false" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#950#951#0" expanded="true" />
-                <element signature="e#1013#1014#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FeatureSet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/FeatureSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+              <folding>
+                <element signature="e#1075#1076#0" expanded="true" />
+                <element signature="e#1123#1124#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,15 +143,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/Template.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/Feature.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/LearnToRankHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/FeatureSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LeanToRankClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankListResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHit.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankGetResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/FeatureSet.java" />
       </list>
     </option>
   </component>
@@ -321,7 +320,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TestLtrClient.testFeaturesetCreation">
     <configuration name="ElasticSearchLtrRESTClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -492,8 +491,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.LearnToRankClient" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestLtrClient.testFeaturesetCreation" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestLtrClient.testFeaturesetCreation" />
+        <item index="1" class="java.lang.String" itemvalue="Application.LearnToRankClient" />
         <item index="2" class="java.lang.String" itemvalue="Application.LeanToRankSearchClient" />
         <item index="3" class="java.lang.String" itemvalue="Application.ElasticSearchLtrRESTClient" />
       </list>
@@ -518,21 +517,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 12h 01m 57s.xml">
-      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 12h 04m 12s.xml">
-      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 12h 04m 51s.xml">
-      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 12h 05m 20s.xml">
-      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 12h 07m 48s.xml">
-      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 13h 32m 05s.xml">
       <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
     </history-entry>
@@ -546,6 +530,21 @@
       <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 13h 36m 15s.xml">
+      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 13h 54m 06s.xml">
+      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 13h 54m 17s.xml">
+      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 13h 55m 20s.xml">
+      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 13h 56m 02s.xml">
+      <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLtrClient_testFeaturesetCreation - 2017.12.04 at 13h 59m 18s.xml">
       <configuration name="TestLtrClient.testFeaturesetCreation" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -595,8 +594,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1396#1397#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -809,26 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/FeatureSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="50" column="69" lean-forward="false" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#950#951#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHits.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -844,17 +823,6 @@
         <state relative-caret-position="330">
           <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding>
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1162#1163#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -879,14 +847,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/LearnToRankHit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/FeatureSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+          <folding>
+            <element signature="e#1075#1076#0" expanded="true" />
+            <element signature="e#1123#1124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="162" column="106" lean-forward="false" selection-start-line="162" selection-start-column="106" selection-end-line="162" selection-end-column="106" />
+        <state relative-caret-position="393">
+          <caret line="93" column="56" lean-forward="false" selection-start-line="93" selection-start-column="56" selection-end-line="93" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1396#1397#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="87" column="23" lean-forward="false" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
           </folding>
         </state>
       </provider>
