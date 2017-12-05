@@ -1,4 +1,4 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response;
+package com.github.onsdigital.elasticutils.ml.client.http.response.features;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
