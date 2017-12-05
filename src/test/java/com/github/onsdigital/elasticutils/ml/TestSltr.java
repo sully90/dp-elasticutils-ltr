@@ -5,10 +5,15 @@ import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.SltrRespo
 import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.Fields;
 import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.LogEntry;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
+import com.github.onsdigital.elasticutils.ml.requests.LoggingQuery;
+import com.github.onsdigital.elasticutils.ml.requests.models.SltrQuery;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.Response;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -58,6 +63,12 @@ public class TestSltr {
         return LearnToRankHelper.getLTRClient(HOSTNAME);
     }
 
+    public static QueryBuilder getQuery() {
+        QueryBuilder filterQuery = QueryBuilders.termsQuery("_id", "7555", "1370", "1369");
+
+        return QueryBuilders.boolQuery().filter(filterQuery);
+    }
+
     @Test
     public void test() {
         try (LearnToRankClient client = getClient()) {
@@ -67,6 +78,15 @@ public class TestSltr {
             Fields fields = movies.get(0).getFields();
             LogEntry entry = fields.getLtrLogList().get(0).get("log_entry").get(0);
             System.out.println(entry.getName() + " : " + entry.getValue());
+
+            SltrQuery sltrQuery = new SltrQuery("logged_featureset", "more_movie_features");
+            sltrQuery.setParam("keywords", "rambo");
+
+            QueryBuilder filterQuery = getQuery();
+            System.out.println(filterQuery.getName());
+
+            LoggingQuery loggingQuery = new LoggingQuery(filterQuery, sltrQuery);
+            System.out.println(loggingQuery.toJson());
 
         } catch (Exception e) {
             Assert.fail(e.getMessage());
