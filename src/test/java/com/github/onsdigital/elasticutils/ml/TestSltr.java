@@ -6,6 +6,7 @@ import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.LogEntry;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
 import com.github.onsdigital.elasticutils.ml.requests.LoggingQuery;
+import com.github.onsdigital.elasticutils.ml.requests.models.LogSpecs;
 import com.github.onsdigital.elasticutils.ml.requests.models.SltrQuery;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -75,13 +76,14 @@ public class TestSltr {
             LogEntry entry = fields.getLtrLogList().get(0).get("log_entry").get(0);
             System.out.println(entry.getName() + " : " + entry.getValue());
 
+            QueryBuilder filterQuery = getQuery();
+
             SltrQuery sltrQuery = new SltrQuery("logged_featureset", "more_movie_features");
             sltrQuery.setParam("keywords", "rambo");
 
-            QueryBuilder filterQuery = getQuery();
-            System.out.println(filterQuery.getName());
+            LogSpecs logSpecs = new LogSpecs("log_entry", "logged_featureset");
 
-            LoggingQuery loggingQuery = new LoggingQuery(filterQuery, sltrQuery);
+            LoggingQuery loggingQuery = new LoggingQuery(filterQuery, sltrQuery, logSpecs);
             System.out.println(loggingQuery.toJson());
 
         } catch (Exception e) {
