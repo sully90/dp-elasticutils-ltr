@@ -1,8 +1,8 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response.features;
+package com.github.onsdigital.elasticutils.ml.client.response.features;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.onsdigital.elasticutils.ml.client.http.response.AbstractHit;
-import com.github.onsdigital.elasticutils.ml.client.http.response.features.models.FeatureSet;
+import com.github.onsdigital.elasticutils.ml.client.response.AbstractHit;
+import com.github.onsdigital.elasticutils.ml.client.response.features.models.FeatureSet;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 
 /**

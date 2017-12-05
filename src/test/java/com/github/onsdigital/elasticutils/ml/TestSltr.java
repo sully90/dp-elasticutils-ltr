@@ -1,17 +1,13 @@
 package com.github.onsdigital.elasticutils.ml;
 
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.SltrResponse;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.Fields;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.LogEntry;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.LogEntry;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
 import com.github.onsdigital.elasticutils.ml.requests.LoggingQuery;
 import com.github.onsdigital.elasticutils.ml.requests.models.SltrQuery;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
-import org.apache.http.HttpEntity;
-import org.apache.http.util.EntityUtils;
-import org.elasticsearch.client.Response;
-import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.junit.Assert;

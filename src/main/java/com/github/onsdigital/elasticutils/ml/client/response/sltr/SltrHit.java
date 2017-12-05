@@ -1,12 +1,12 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response.sltr;
+package com.github.onsdigital.elasticutils.ml.client.response.sltr;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.onsdigital.elasticutils.ml.client.http.response.AbstractHit;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.Fields;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.SltrDocument;
+import com.github.onsdigital.elasticutils.ml.client.response.AbstractHit;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;

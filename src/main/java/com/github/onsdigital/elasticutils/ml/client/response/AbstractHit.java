@@ -1,4 +1,4 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response;
+package com.github.onsdigital.elasticutils.ml.client.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

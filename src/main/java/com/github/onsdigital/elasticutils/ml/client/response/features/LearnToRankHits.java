@@ -1,6 +1,6 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response.features;
+package com.github.onsdigital.elasticutils.ml.client.response.features;
 
-import com.github.onsdigital.elasticutils.ml.client.http.response.AbstractHits;
+import com.github.onsdigital.elasticutils.ml.client.response.AbstractHits;
 
 import java.util.List;
 

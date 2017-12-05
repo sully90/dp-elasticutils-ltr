@@ -1,8 +1,8 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response.sltr;
+package com.github.onsdigital.elasticutils.ml.client.response.sltr;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.github.onsdigital.elasticutils.ml.client.http.response.AbstractHits;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.SltrDocument;
+import com.github.onsdigital.elasticutils.ml.client.response.AbstractHits;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
 
 import java.io.IOException;
 import java.util.ArrayList;

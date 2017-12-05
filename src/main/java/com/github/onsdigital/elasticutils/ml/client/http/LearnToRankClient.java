@@ -1,10 +1,10 @@
 package com.github.onsdigital.elasticutils.ml.client.http;
 
-import com.github.onsdigital.elasticutils.ml.client.http.response.features.LearnToRankGetResponse;
-import com.github.onsdigital.elasticutils.ml.client.http.response.features.LearnToRankListResponse;
-import com.github.onsdigital.elasticutils.ml.client.http.response.features.models.Feature;
-import com.github.onsdigital.elasticutils.ml.client.http.response.features.models.FeatureSet;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.SltrResponse;
+import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankGetResponse;
+import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankListResponse;
+import com.github.onsdigital.elasticutils.ml.client.response.features.models.Feature;
+import com.github.onsdigital.elasticutils.ml.client.response.features.models.FeatureSet;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;

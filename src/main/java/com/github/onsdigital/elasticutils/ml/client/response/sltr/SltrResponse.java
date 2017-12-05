@@ -1,6 +1,6 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response.sltr;
+package com.github.onsdigital.elasticutils.ml.client.response.sltr;
 
-import com.github.onsdigital.elasticutils.ml.client.http.response.AbstractResponse;
+import com.github.onsdigital.elasticutils.ml.client.response.AbstractResponse;
 import com.github.onsdigital.elasticutils.ml.util.ResponseUtils;
 import org.elasticsearch.client.Response;
 

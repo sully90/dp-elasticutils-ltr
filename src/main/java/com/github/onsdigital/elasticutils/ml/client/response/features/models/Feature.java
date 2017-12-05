@@ -1,4 +1,4 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response.features.models;
+package com.github.onsdigital.elasticutils.ml.client.response.features.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

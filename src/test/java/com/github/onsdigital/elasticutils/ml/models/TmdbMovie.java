@@ -1,7 +1,7 @@
 package com.github.onsdigital.elasticutils.ml.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models.SltrDocument;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.github.onsdigital.elasticutils.ml.client.http.response.sltr.models;
+package com.github.onsdigital.elasticutils.ml.client.response.sltr.models;
 
 /**
  * @author sullid (David Sullivan) on 05/12/2017
