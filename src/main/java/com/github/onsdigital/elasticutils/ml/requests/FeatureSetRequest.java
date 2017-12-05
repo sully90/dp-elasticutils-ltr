@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.FeatureSet;
+import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 
 /**
  * @author sullid (David Sullivan) on 23/11/2017
@@ -20,9 +21,6 @@ public class FeatureSetRequest {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String type;
-
-    @JsonIgnore
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     protected FeatureSetRequest() {
         // For Jackson
@@ -71,7 +69,7 @@ public class FeatureSetRequest {
 
     @JsonIgnore
     public String toJson() throws JsonProcessingException {
-        return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+        return JsonUtils.toJson(this, true);
     }
 
     public static class FeatureSetRequestBuilder {

@@ -1,11 +1,14 @@
 package com.github.onsdigital.elasticutils.ml.client.http;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankGetResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankListResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.Feature;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.FeatureSet;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
+import com.github.onsdigital.elasticutils.ml.ranklib.models.RankLibModel;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
+import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -21,10 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 /**
  * @author sullid (David Sullivan) on 30/11/2017
@@ -148,6 +148,19 @@ public class LearnToRankClient implements AutoCloseable {
         return this.post(api, Collections.emptyMap(), json);
     }
 
+    // MODEL CRUD //
+
+    public Response uploadModel(String featureSet, RankLibModel model) throws IOException {
+        final Map<String, RankLibModel> request = new HashMap<String, RankLibModel>() {{
+            put("model", model);
+        }};
+
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(),
+                featureSet, LearnToRankEndPoint.CREATE_MODEL.getEndPoint());
+
+        return this.post(api, Collections.emptyMap(), JsonUtils.toJson(request));
+    }
+
     // SLTR SEARCH //
 
     public SltrResponse sltr(String index, String jsonRequest) throws IOException {
@@ -155,8 +168,6 @@ public class LearnToRankClient implements AutoCloseable {
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
         return SltrResponse.fromResponse(response);
     }
-
-    // RANKLIB //
 
     @Override
     public void close() throws Exception {
@@ -200,7 +211,8 @@ public class LearnToRankClient implements AutoCloseable {
 
     enum LearnToRankEndPoint {
         FEATURESET("_featureset"),
-        ADD_FEATURES("_addfeatures");
+        ADD_FEATURES("_addfeatures"),
+        CREATE_MODEL("_createmodel");
 
         private String endPoint;
 

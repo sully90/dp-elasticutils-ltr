@@ -1,7 +1,6 @@
 package com.github.onsdigital.elasticutils.ml.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
@@ -22,7 +21,6 @@ import java.util.Map;
 public class LearnToRankHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnToRankHelper.class);
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     public static final int DEFAULT_HTTP_PORT = 9200;
 
@@ -47,7 +45,7 @@ public class LearnToRankHelper {
 
     public static Map<String, Object> templateMapFromQueryBuilder(QueryBuilder qb) throws IOException {
         String json = qb.toString();
-        Map<String, Object> templateMap = MAPPER.readValue(json, new TypeReference<Map<String, Object>>(){});
+        Map<String, Object> templateMap = JsonUtils.MAPPER.readValue(json, new TypeReference<Map<String, Object>>(){});
         return templateMap;
     }
 

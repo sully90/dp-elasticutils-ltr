@@ -3,10 +3,10 @@ package com.github.onsdigital.elasticutils.ml.client.response.sltr;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onsdigital.elasticutils.ml.client.response.AbstractHit;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
+import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -18,8 +18,6 @@ import java.util.Map;
  * @project dp-elasticutils-ltr
  */
 public class SltrHit<T> extends AbstractHit {
-
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     @JsonProperty("_source")
     private Map<String, Object> source;
@@ -50,13 +48,13 @@ public class SltrHit<T> extends AbstractHit {
         jsonMap.put("fields", this.fields);
         jsonMap.put("matched_queries", this.matchedQueries);
 
-        return MAPPER.writeValueAsString(jsonMap);
+        return JsonUtils.toJson(jsonMap);
     }
 
     @JsonIgnore
     public T asClass(Class<? extends SltrDocument> returnClass) throws IOException {
         String jsonSource = this.toJson();
-        return MAPPER.readValue(jsonSource, (Class<T>) returnClass);
+        return JsonUtils.MAPPER.readValue(jsonSource, (Class<T>) returnClass);
     }
 
 }

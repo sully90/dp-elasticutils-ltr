@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,6 @@ import java.util.List;
  * Simple class to represent a FeatureSet in Elasticsearch LTR
  */
 public class FeatureSet {
-
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
@@ -49,7 +47,7 @@ public class FeatureSet {
 
     @JsonIgnore
     public String toJson() throws JsonProcessingException {
-        return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+        return JsonUtils.toJson(this, true);
     }
 
     @Override

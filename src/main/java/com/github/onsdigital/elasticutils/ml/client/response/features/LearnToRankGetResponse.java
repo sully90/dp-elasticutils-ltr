@@ -3,6 +3,7 @@ package com.github.onsdigital.elasticutils.ml.client.response.features;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
+import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.Response;
 
@@ -13,8 +14,6 @@ import java.io.IOException;
  * @project dp-elasticutils-ltr
  */
 public class LearnToRankGetResponse {
-
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     @JsonProperty("_index")
     private String index;
@@ -30,7 +29,7 @@ public class LearnToRankGetResponse {
 
     public static LearnToRankGetResponse fromResponse(Response response) throws IOException {
         String json = EntityUtils.toString(response.getEntity());
-        LearnToRankGetResponse getResponse = MAPPER.readValue(json, LearnToRankGetResponse.class);
+        LearnToRankGetResponse getResponse = JsonUtils.MAPPER.readValue(json, LearnToRankGetResponse.class);
         return getResponse;
     }
 
