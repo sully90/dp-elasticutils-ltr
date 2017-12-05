@@ -1,6 +1,6 @@
 package com.github.onsdigital.elasticutils.ml.client.http.response.features;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.onsdigital.elasticutils.ml.client.http.response.AbstractHits;
 
 import java.util.List;
 
@@ -8,23 +8,12 @@ import java.util.List;
  * @author sullid (David Sullivan) on 30/11/2017
  * @project dp-elasticutils-ltr
  */
-public class LearnToRankHits {
+public class LearnToRankHits extends AbstractHits {
 
-    private int total;
-    @JsonProperty("max_score")
-    private float maxScore;
     private List<LearnToRankHit> hits;
 
     private LearnToRankHits() {
 
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public float getMaxScore() {
-        return maxScore;
     }
 
     public List<LearnToRankHit> getHits() {

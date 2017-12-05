@@ -1,11 +1,10 @@
-package com.github.onsdigital.elasticutils.ml.features;
+package com.github.onsdigital.elasticutils.ml.client.http.response.features.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.junit.Assert;
 
 import java.io.IOException;
 import java.util.Arrays;

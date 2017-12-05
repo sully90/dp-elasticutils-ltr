@@ -2,8 +2,9 @@ package com.github.onsdigital.elasticutils.ml.client.http;
 
 import com.github.onsdigital.elasticutils.ml.client.http.response.features.LearnToRankGetResponse;
 import com.github.onsdigital.elasticutils.ml.client.http.response.features.LearnToRankListResponse;
-import com.github.onsdigital.elasticutils.ml.features.Feature;
-import com.github.onsdigital.elasticutils.ml.features.FeatureSet;
+import com.github.onsdigital.elasticutils.ml.client.http.response.features.models.Feature;
+import com.github.onsdigital.elasticutils.ml.client.http.response.features.models.FeatureSet;
+import com.github.onsdigital.elasticutils.ml.client.http.response.sltr.SltrResponse;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
@@ -59,13 +60,15 @@ public class LearnToRankClient implements AutoCloseable {
         return this.restClient.performRequest(HttpMethod.DELETE.method(), apiEndPoint, params);
     }
 
+    // FEATURES //
+
     /**
      *
      * @return true if featureStore exists, false otherwise
      * @throws IOException
      */
     public boolean featureStoreExists() throws IOException {
-        String api = endpoint(LearnToRankEndPoint.FEATURESET);
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET);
         try {
             Response response = this.get(api, Collections.emptyMap());
             return response.getStatusLine().getStatusCode() == HttpStatus.SC_OK;
@@ -114,17 +117,17 @@ public class LearnToRankClient implements AutoCloseable {
      * Gets a featureset by its name
      */
     public LearnToRankGetResponse getFeatureSetByName(String name) throws IOException {
-        String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
         return LearnToRankGetResponse.fromResponse(this.get(api, Collections.emptyMap()));
     }
 
     public Response deleteFeatureSetByName(String name) throws IOException {
-        String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
         return this.delete(api, Collections.emptyMap());
     }
 
     public LearnToRankListResponse listFeatureSets() throws IOException {
-        String api = endpoint(LearnToRankEndPoint.FEATURESET);
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET);
         Map<String, String> params = Collections.EMPTY_MAP;
 
         Response response = this.get(api, params);
@@ -132,17 +135,25 @@ public class LearnToRankClient implements AutoCloseable {
     }
 
     public Response addFeatureSet(FeatureSetRequest request) throws IOException {
-        String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), request.getName());
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), request.getName());
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Adding featureset with name {} : {}", request.getName(), api);
         return this.put(api, Collections.emptyMap(), request.toJson());
     }
 
     public Response addToFeatureSet(String name, List<Feature> featureList) throws IOException {
-        String api = endpoint(LearnToRankEndPoint.FEATURESET.getEndPoint(), name, LearnToRankEndPoint.ADD_FEATURES.getEndPoint());
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), name, LearnToRankEndPoint.ADD_FEATURES.getEndPoint());
         FeatureSet featureSet = new FeatureSet(null, featureList);
 
         String json = featureSet.toJson();
         return this.post(api, Collections.emptyMap(), json);
+    }
+
+    // SLTR SEARCH //
+
+    public SltrResponse sltr(String index, String jsonRequest) throws IOException {
+        String api = endpoint(false, Operation.SEARCH.getOperation());
+        Response response = this.post(api, Collections.emptyMap(), jsonRequest);
+        return SltrResponse.fromResponse(response);
     }
 
     @Override
@@ -154,27 +165,29 @@ public class LearnToRankClient implements AutoCloseable {
 
     // UTIL //
 
-    static String endpoint(String[] indices, String[] types, String endpoint) {
-        return endpoint(String.join(",", indices), String.join(",", types), endpoint);
+    static String endpoint(boolean featureCrud, String[] indices, String[] types, String endpoint) {
+        return endpoint(featureCrud, String.join(",", indices), String.join(",", types), endpoint);
     }
 
-    static String endpoint(LearnToRankEndPoint... learnToRankEndPoints) {
+    static String endpoint(boolean featureCrud, LearnToRankEndPoint... learnToRankEndPoints) {
         String[] endPoints = new String[learnToRankEndPoints.length];
 
         for (int i = 0; i < learnToRankEndPoints.length; i++) {
             endPoints[i] = learnToRankEndPoints[i].getEndPoint();
         }
 
-        return endpoint(endPoints);
+        return endpoint(featureCrud, endPoints);
     }
 
     /**
      * Utility method to build request's endpoint.
      */
-    static String endpoint(String... parts) {
+    static String endpoint(boolean featureCrud, String... parts) {
         StringJoiner joiner = new StringJoiner("/", "/", "");
-        // Add the _ltr endpoint
-        joiner.add(LTR_INDEX);
+        if (featureCrud) {
+            // Add the base LTR index
+            joiner.add(LTR_INDEX);
+        }
         for (String part : parts) {
             if (Strings.hasLength(part)) {
                 joiner.add(part);
@@ -195,6 +208,20 @@ public class LearnToRankClient implements AutoCloseable {
 
         public String getEndPoint() {
             return endPoint;
+        }
+    }
+
+    enum Operation {
+        SEARCH("_search");
+
+        private String operation;
+
+        Operation(String operation) {
+            this.operation = operation;
+        }
+
+        public String getOperation() {
+            return operation;
         }
     }
 

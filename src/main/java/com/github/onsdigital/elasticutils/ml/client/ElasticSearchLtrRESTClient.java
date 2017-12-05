@@ -4,9 +4,9 @@
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.github.onsdigital.elasticutils.client.ElasticSearchRESTClient;
 //import com.github.onsdigital.elasticutils.client.bulk.configuration.BulkProcessorConfiguration;
-//import com.github.onsdigital.elasticutils.ml.features.Feature;
-//import com.github.onsdigital.elasticutils.ml.features.FeatureSet;
-//import com.github.onsdigital.elasticutils.ml.features.Template;
+//import com.github.onsdigital.elasticutils.ml.client.http.response.result.features.models.features.Feature;
+//import com.github.onsdigital.elasticutils.ml.client.http.response.result.features.models.features.FeatureSet;
+//import com.github.onsdigital.elasticutils.ml.client.http.response.result.features.models.features.Template;
 //import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 //import com.github.onsdigital.elasticutils.ml.util.ResponseParser;
 //import org.apache.http.HttpEntity;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.onsdigital.elasticutils.ml.features.FeatureSet;
+import com.github.onsdigital.elasticutils.ml.client.http.response.features.models.FeatureSet;
 
 /**
  * @author sullid (David Sullivan) on 23/11/2017
