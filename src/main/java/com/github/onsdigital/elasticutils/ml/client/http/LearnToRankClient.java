@@ -156,6 +156,8 @@ public class LearnToRankClient implements AutoCloseable {
         return SltrResponse.fromResponse(response);
     }
 
+    // RANKLIB //
+
     @Override
     public void close() throws Exception {
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Closing RestClient");
