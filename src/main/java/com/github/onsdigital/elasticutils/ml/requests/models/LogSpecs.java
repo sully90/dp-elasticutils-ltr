@@ -2,6 +2,7 @@ package com.github.onsdigital.elasticutils.ml.requests.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.onsdigital.elasticutils.ml.query.SltrQueryBuilder;
 import com.github.onsdigital.elasticutils.ml.util.JsonSerializable;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 
@@ -40,5 +41,9 @@ public class LogSpecs implements JsonSerializable {
         logSpecs.put("log_specs", this);
         ltrLog.put("ltr_log", logSpecs);
         return JsonUtils.toJson(ltrLog, true);
+    }
+
+    public static LogSpecs fromQuery(String name, SltrQueryBuilder queryBuilder) {
+        return new LogSpecs(name, queryBuilder.getSltrQueryName());
     }
 }

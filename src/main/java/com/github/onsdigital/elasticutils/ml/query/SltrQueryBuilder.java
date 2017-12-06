@@ -37,6 +37,10 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
         this.params = params;
     }
 
+    public String getSltrQueryName() {
+        return this.name;
+    }
+
     public void setParam(String key, String value) {
         this.params.put(key, value);
     }

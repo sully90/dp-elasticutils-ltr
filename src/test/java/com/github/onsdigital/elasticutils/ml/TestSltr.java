@@ -2,6 +2,7 @@ package com.github.onsdigital.elasticutils.ml;
 
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
 import com.github.onsdigital.elasticutils.ml.query.SltrQueryBuilder;
@@ -16,10 +17,10 @@ import org.elasticsearch.index.query.TermsQueryBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author sullid (David Sullivan) on 05/12/2017
@@ -29,37 +30,34 @@ public class TestSltr {
 
     private static final String HOSTNAME = "localhost";
     private static final String INDEX = "tmdb";
-    private static final String QUERY = "{\n" +
-            "    \"query\": {\n" +
-            "        \"bool\": {\n" +
-            "            \"filter\": [\n" +
-            "                {\n" +
-            "                    \"terms\": {\n" +
-            "                        \"_id\": [\"7555\", \"1370\", \"1369\"]\n" +
-            "\n" +
-            "                    }\n" +
-            "                },\n" +
-            "                {\n" +
-            "                    \"sltr\": {\n" +
-            "                        \"_name\": \"logged_featureset\",\n" +
-            "                        \"featureset\": \"movie_features\",\n" +
-            "                        \"params\": {\n" +
-            "                            \"keywords\": \"rambo\"\n" +
-            "                        }\n" +
-            "                }}\n" +
-            "\n" +
-            "            ]\n" +
-            "        }\n" +
-            "    },\n" +
-            "    \"ext\": {\n" +
-            "        \"ltr_log\": {\n" +
-            "            \"log_specs\": {\n" +
-            "                \"name\": \"log_entry\",\n" +
-            "                \"named_query\": \"logged_featureset\"\n" +
-            "            }\n" +
-            "        }\n" +
-            "    }\n" +
-            "}";
+
+    private static final List<Integer> ids = new ArrayList<Integer>() {{
+        add(7555);
+        add(1370);
+        add(1369);
+    }};
+    private static final List<List<Float>> expectedValues;
+
+    static  {
+        final List<Float> values1 = new LinkedList<Float>() {{
+            add(Float.valueOf(12.318446f));
+            add(Float.valueOf(9.8376875f));
+        }};
+        final List<Float> values2 = new LinkedList<Float>() {{
+            add(Float.valueOf(6.8449354f));
+            add(Float.valueOf(10.7808075f));
+        }};
+        final List<Float> values3 = new LinkedList<Float>() {{
+            add(Float.valueOf(9.510193f));
+            add(Float.valueOf(10.7808075f));
+        }};
+
+        expectedValues = new LinkedList<List<Float>>() {{
+            add(values1);
+            add(values2);
+            add(values3);
+        }};
+    }
 
     public static LearnToRankClient getClient() {
         return LearnToRankHelper.getLTRClient(HOSTNAME);
@@ -83,33 +81,23 @@ public class TestSltr {
             SltrQueryBuilder loggingQueryBuilder = new SltrQueryBuilder("logged_featureset", "movie_features");
             loggingQueryBuilder.setParam("keywords", "rambo");
 
-            LogSpecs logSpecs = new LogSpecs("log_entry", "logged_featureset");
+            LogQuerySearchRequest searchRequest = LogQuerySearchRequest.getRequestForQuery(termsQueryBuilder, loggingQueryBuilder);
 
-            QueryBuilder qb = QueryBuilders.boolQuery()
-                    .filter(termsQueryBuilder)
-                    .filter(loggingQueryBuilder);
-
-            LogQuerySearchRequest searchRequest = new LogQuerySearchRequest(qb, logSpecs);
-
-            System.out.println(searchRequest.toJson());
-
-            SltrResponse response = client.sltr(INDEX, searchRequest, 10);
+            SltrResponse response = client.sltr(INDEX, searchRequest);
             List<TmdbMovie> movies = response.getHits().asClass(TmdbMovie.class);
-            List<Judgement> judgements = generateTestJudgements(movies.size());
-            Map<Judgement, SltrDocument> queryFeatureMap = new HashMap<>();
+
+            assertEquals(movies.size(), 3);
 
             for (int i = 0; i < movies.size(); i++) {
-                queryFeatureMap.put(judgements.get(i), movies.get(i));
+                TmdbMovie movie = movies.get(i);
+
+                assertTrue(ids.contains(movie.getId()));
+
+                Fields fields = movie.getFields();
+                List<Float> values = fields.getValues();
+
+                assertEquals(values, expectedValues.get(i));
             }
-
-            String outPath = "/Users/sullid/idea/elasticsearch-learning-to-rank/demo";
-            String fileName = "java_sample_judgements_wfeatures.txt";
-
-            List<String> rankLibFormat = Exporter.toRankLibFormat(queryFeatureMap);
-
-            System.out.println(rankLibFormat);
-
-            Exporter.export(outPath + "/" + fileName, queryFeatureMap);
 
         } catch (Exception e) {
             Assert.fail(e.getMessage());

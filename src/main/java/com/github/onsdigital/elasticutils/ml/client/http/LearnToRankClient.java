@@ -162,9 +162,9 @@ public class LearnToRankClient implements AutoCloseable {
 
     // SLTR SEARCH //
 
-    public SltrResponse sltr(String index, LogQuerySearchRequest logQuery, int size) throws IOException {
+    public SltrResponse sltr(String index, LogQuerySearchRequest logQuery) throws IOException {
         String api = endpoint(false, Operation.SEARCH.getOperation());
-        String jsonRequest = logQuery.toJsonWithSize(size);
+        String jsonRequest = logQuery.toJson();
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
         return SltrResponse.fromResponse(response);
     }

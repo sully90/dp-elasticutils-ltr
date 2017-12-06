@@ -39,9 +39,8 @@ public class LogQuerySearchRequest implements JsonSerializable {
      * @throws IOException
      */
     @JsonIgnore
-    private Map<String, Object> getQueryMap(int size) throws IOException {
+    private Map<String, Object> getQueryMap() throws IOException {
         Map<String, Object> queryMap = new LinkedHashMap<>();
-        queryMap.put("size", size);
 
         Map<String, Object> qbMap = JsonUtils.MAPPER.readValue(this.loggingQuery.toString(), new TypeReference<Map<String, Object>>(){});
         queryMap.put("query", qbMap);
@@ -58,11 +57,7 @@ public class LogQuerySearchRequest implements JsonSerializable {
      */
     @Override
     public String toJson() throws IOException {
-        return this.toJsonWithSize(10);
-    }
-
-    public String toJsonWithSize(int size) throws IOException {
-        return JsonUtils.toJson(this.getQueryMap(size), true);
+        return JsonUtils.toJson(this.getQueryMap(), true);
     }
 
     public void toFile(File file) throws IOException {
@@ -77,6 +72,14 @@ public class LogQuerySearchRequest implements JsonSerializable {
             throw new UnsupportedOperationException("Json file does not contain either a sltr or ext block");
         }
         return json;
+    }
+
+    public static LogQuerySearchRequest getRequestForQuery(TermsQueryBuilder termQueryBuilder, SltrQueryBuilder sltrQueryBuilder) {
+        QueryBuilder qb = QueryBuilders.boolQuery()
+                .filter(termQueryBuilder)
+                .filter(sltrQueryBuilder);
+        LogSpecs logSpecs = LogSpecs.fromQuery("log_entry", sltrQueryBuilder);
+        return new LogQuerySearchRequest(qb, logSpecs);
     }
 
     public static void main(String[] args) {
