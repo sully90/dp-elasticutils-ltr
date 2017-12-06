@@ -53,7 +53,7 @@ public class TestLtrClient {
 
         try {
             System.out.println(request.toJson());
-        } catch (JsonProcessingException e) {
+        } catch (IOException e) {
             Assert.fail(e.getMessage());
         }
 

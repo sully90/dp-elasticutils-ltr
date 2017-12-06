@@ -5,12 +5,13 @@ import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.LogEntry;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
-import com.github.onsdigital.elasticutils.ml.requests.LoggingQuery;
+import com.github.onsdigital.elasticutils.ml.query.SltrQueryBuilder;
+import com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest;
 import com.github.onsdigital.elasticutils.ml.requests.models.LogSpecs;
-import com.github.onsdigital.elasticutils.ml.requests.models.SltrQuery;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.TermsQueryBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -60,27 +61,26 @@ public class TestSltr {
         return LearnToRankHelper.getLTRClient(HOSTNAME);
     }
 
-    public static QueryBuilder getQuery() {
-        QueryBuilder filterQuery = QueryBuilders.termsQuery("_id", "7555", "1370", "1369");
-
-        return QueryBuilders.boolQuery().filter(filterQuery);
-    }
-
     @Test
     public void test() {
         try (LearnToRankClient client = getClient()) {
 
-            QueryBuilder filterQuery = getQuery();
+            TermsQueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("_id", "7555", "1370", "1369");
 
-            SltrQuery sltrQuery = new SltrQuery("logged_featureset", "movie_features");
-            sltrQuery.setParam("keywords", "rambo");
+            SltrQueryBuilder loggingQueryBuilder = new SltrQueryBuilder("logged_featureset", "movie_features");
+            loggingQueryBuilder.setParam("keywords", "rambo");
 
             LogSpecs logSpecs = new LogSpecs("log_entry", "logged_featureset");
 
-            LoggingQuery loggingQuery = new LoggingQuery(filterQuery, sltrQuery, logSpecs);
-            System.out.println(loggingQuery.toJson());
+            QueryBuilder qb = QueryBuilders.boolQuery()
+                    .filter(termsQueryBuilder)
+                    .filter(loggingQueryBuilder);
 
-            SltrResponse response = client.sltr(INDEX, loggingQuery);
+            LogQuerySearchRequest searchRequest = new LogQuerySearchRequest(qb, logSpecs);
+
+            System.out.println(searchRequest.toJson());
+
+            SltrResponse response = client.sltr(INDEX, searchRequest, 10);
             List<TmdbMovie> movies = response.getHits().asClass(TmdbMovie.class);
             Fields fields = movies.get(0).getFields();
             LogEntry entry = fields.getLtrLogList().get(0).get("log_entry").get(0);

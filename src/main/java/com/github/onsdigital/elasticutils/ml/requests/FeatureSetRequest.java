@@ -6,13 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.FeatureSet;
+import com.github.onsdigital.elasticutils.ml.util.JsonSerializable;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
+
+import java.io.IOException;
 
 /**
  * @author sullid (David Sullivan) on 23/11/2017
  * @project dp-elasticutils-ltr
  */
-public class FeatureSetRequest {
+public class FeatureSetRequest implements JsonSerializable {
 
     private FeatureSet featureSet;
 
@@ -67,8 +70,8 @@ public class FeatureSetRequest {
         return type;
     }
 
-    @JsonIgnore
-    public String toJson() throws JsonProcessingException {
+    @Override
+    public String toJson() throws IOException {
         return JsonUtils.toJson(this, true);
     }
 

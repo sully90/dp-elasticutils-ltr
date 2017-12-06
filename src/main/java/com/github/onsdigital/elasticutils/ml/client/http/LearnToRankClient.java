@@ -1,6 +1,5 @@
 package com.github.onsdigital.elasticutils.ml.client.http;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankGetResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankListResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.Feature;
@@ -8,9 +7,8 @@ import com.github.onsdigital.elasticutils.ml.client.response.features.models.Fea
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
 import com.github.onsdigital.elasticutils.ml.ranklib.models.RankLibModel;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
-import com.github.onsdigital.elasticutils.ml.requests.LoggingQuery;
+import com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
-import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
@@ -164,9 +162,9 @@ public class LearnToRankClient implements AutoCloseable {
 
     // SLTR SEARCH //
 
-    public SltrResponse sltr(String index, LoggingQuery loggingQuery) throws IOException {
+    public SltrResponse sltr(String index, LogQuerySearchRequest logQuery, int size) throws IOException {
         String api = endpoint(false, Operation.SEARCH.getOperation());
-        String jsonRequest = loggingQuery.toJson();
+        String jsonRequest = logQuery.toJsonWithSize(size);
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
         return SltrResponse.fromResponse(response);
     }
@@ -238,19 +236,6 @@ public class LearnToRankClient implements AutoCloseable {
 
         public String getOperation() {
             return operation;
-        }
-    }
-
-    public static void main(String[] args) {
-        try (LearnToRankClient client = LearnToRankHelper.getLTRClient("localhost")) {
-//            client.dropFeatureStore();
-//            client.initFeatureStore();
-//            System.out.println(client.getFeatureSetByName("test_more_movie_features").getSource().toJson());
-            System.out.println(client.featureStoreExists());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
