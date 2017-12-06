@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bfd6f53-8793-492f-8c87-f9d7fd1ea245" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/query/SltrQueryBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/JsonSerializable.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LoggingQuery.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/SltrQuery.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Exporter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_2.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" afterPath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dp-elasticutils-ltr.iml" afterPath="$PROJECT_DIR$/dp-elasticutils-ltr.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/SltrDocument.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/SltrDocument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java" afterPath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="239" column="5" lean-forward="false" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
+            <state relative-caret-position="54">
+              <caret line="198" column="61" lean-forward="true" selection-start-line="198" selection-start-column="30" selection-end-line="198" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -38,8 +37,8 @@
       <file leaf-file-name="TestSltr.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+            <state relative-caret-position="369">
+              <caret line="104" column="28" lean-forward="false" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,26 +46,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SltrResponse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/SltrResponse.java">
+      <file leaf-file-name="SltrDocument.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/SltrDocument.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+            <state relative-caret-position="315">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#572#573#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SltrHit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/SltrHit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#494#495#0" expanded="true" />
+                <element signature="e#531#532#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,8 +63,18 @@
       <file leaf-file-name="LogQuerySearchRequest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="62" column="53" lean-forward="false" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+            <state relative-caret-position="1">
+              <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Exporter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Exporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="438">
+              <caret line="38" column="154" lean-forward="false" selection-start-line="38" selection-start-column="154" selection-end-line="38" selection-end-column="154" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,25 +82,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogSpecs.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java">
+      <file leaf-file-name="Judgement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="489">
+              <caret line="40" column="51" lean-forward="false" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JsonSerializable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/JsonSerializable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
+                <element signature="e#790#791#0" expanded="true" />
+                <element signature="e#820#821#0" expanded="true" />
+                <element signature="e#854#855#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#927#928#0" expanded="true" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1045#1046#0" expanded="true" />
+                <element signature="e#1098#1099#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,8 +108,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -136,10 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/features/Feature.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/result/RankLog.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/result/LogEntry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/result/Fields.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/response/result/SltrDocument.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/models/Director.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/models/Country.java" />
@@ -184,9 +175,13 @@
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/JsonSerializable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/SltrDocument.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Exporter.java" />
       </list>
     </option>
   </component>
@@ -312,17 +307,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ml" type="462c0819:PsiDirectoryNode" />
-              <item name="requests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dp-elasticutils-ltr" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ml" type="462c0819:PsiDirectoryNode" />
-              <item name="requests" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="ranklib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
@@ -380,6 +365,7 @@
       <recent name="com.github.onsdigital.elasticutils.ml" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.github.onsdigital.elasticutils.ml.ranklib.models" />
       <recent name="com.github.onsdigital.elasticutils.ml.client.http.response.sltr" />
       <recent name="com.github.onsdigital.elasticutils.ml.models" />
       <recent name="com.github.onsdigital.elasticutils.ml.client.http.response.result" />
@@ -621,24 +607,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestSltr_test - 2017.12.05 at 15h 55m 10s.xml">
-      <configuration name="TestSltr.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestSltr_test - 2017.12.05 at 15h 58m 49s.xml">
-      <configuration name="TestSltr.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestSltr_test - 2017.12.05 at 15h 59m 05s.xml">
-      <configuration name="TestSltr.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestSltr_test - 2017.12.06 at 07h 17m 00s.xml">
-      <configuration name="TestSltr.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestSltr_test - 2017.12.06 at 07h 18m 56s.xml">
-      <configuration name="TestSltr.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestSltr_test - 2017.12.06 at 07h 20m 20s.xml">
-      <configuration name="TestSltr.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestSltr_test - 2017.12.06 at 07h 25m 19s.xml">
       <configuration name="TestSltr.test" configurationId="JUnit" />
     </history-entry>
@@ -649,6 +617,24 @@
       <configuration name="TestSltr.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestSltr_test - 2017.12.06 at 08h 56m 07s.xml">
+      <configuration name="TestSltr.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltr_test - 2017.12.06 at 09h 39m 17s.xml">
+      <configuration name="TestSltr.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltr_test - 2017.12.06 at 09h 40m 40s.xml">
+      <configuration name="TestSltr.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltr_test - 2017.12.06 at 09h 40m 54s.xml">
+      <configuration name="TestSltr.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltr_test - 2017.12.06 at 09h 46m 37s.xml">
+      <configuration name="TestSltr.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltr_test - 2017.12.06 at 09h 50m 29s.xml">
+      <configuration name="TestSltr.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltr_test - 2017.12.06 at 09h 54m 56s.xml">
       <configuration name="TestSltr.test" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -665,7 +651,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25786802" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25786802" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -694,21 +680,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/ElasticSearchLtrRESTClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="31" column="72" lean-forward="false" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/elasticsearch/elasticsearch/6.0.0/elasticsearch-6.0.0.jar!/org/elasticsearch/search/SearchHits.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="140" column="60" lean-forward="false" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/elasticsearch/elasticsearch/6.0.0/elasticsearch-6.0.0.jar!/org/elasticsearch/common/io/stream/StreamInput.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -732,14 +703,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLearnToRankClient.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/ElasticSearchLtrRESTClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -825,73 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/models/TmdbMovie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="24" lean-forward="false" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1889#1890#0" expanded="true" />
-            <element signature="e#1921#1922#0" expanded="true" />
-            <element signature="e#1949#1950#0" expanded="true" />
-            <element signature="e#1981#1982#0" expanded="true" />
-            <element signature="e#2009#2010#0" expanded="true" />
-            <element signature="e#2043#2044#0" expanded="true" />
-            <element signature="e#2073#2074#0" expanded="true" />
-            <element signature="e#2110#2111#0" expanded="true" />
-            <element signature="e#2144#2145#0" expanded="true" />
-            <element signature="e#2183#2184#0" expanded="true" />
-            <element signature="e#2218#2219#0" expanded="true" />
-            <element signature="e#2252#2253#0" expanded="true" />
-            <element signature="e#2282#2283#0" expanded="true" />
-            <element signature="e#2326#2327#0" expanded="true" />
-            <element signature="e#2358#2359#0" expanded="true" />
-            <element signature="e#2396#2397#0" expanded="true" />
-            <element signature="e#2430#2431#0" expanded="true" />
-            <element signature="e#2489#2490#0" expanded="true" />
-            <element signature="e#2531#2532#0" expanded="true" />
-            <element signature="e#2562#2563#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-            <element signature="e#2628#2629#0" expanded="true" />
-            <element signature="e#2661#2662#0" expanded="true" />
-            <element signature="e#2694#2695#0" expanded="true" />
-            <element signature="e#2723#2724#0" expanded="true" />
-            <element signature="e#2766#2767#0" expanded="true" />
-            <element signature="e#2805#2806#0" expanded="true" />
-            <element signature="e#2846#2847#0" expanded="true" />
-            <element signature="e#2873#2874#0" expanded="true" />
-            <element signature="e#2904#2905#0" expanded="true" />
-            <element signature="e#2933#2934#0" expanded="true" />
-            <element signature="e#2986#2987#0" expanded="true" />
-            <element signature="e#3028#3029#0" expanded="true" />
-            <element signature="e#3066#3067#0" expanded="true" />
-            <element signature="e#3095#3096#0" expanded="true" />
-            <element signature="e#3128#3129#0" expanded="true" />
-            <element signature="e#3160#3161#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
-            <element signature="e#3248#3249#0" expanded="true" />
-            <element signature="e#3288#3289#0" expanded="true" />
-            <element signature="e#3324#3325#0" expanded="true" />
-            <element signature="e#3359#3360#0" expanded="true" />
-            <element signature="e#3390#3391#0" expanded="true" />
-            <element signature="e#3422#3423#0" expanded="true" />
-            <element signature="e#3450#3451#0" expanded="true" />
-            <element signature="e#3488#3489#0" expanded="true" />
-            <element signature="e#3522#3523#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3627#3628#0" expanded="true" />
-            <element signature="e#3660#3661#0" expanded="true" />
-            <element signature="e#3689#3690#0" expanded="true" />
-            <element signature="e#3721#3722#0" expanded="true" />
-            <element signature="e#3751#3752#0" expanded="true" />
-            <element signature="e#3786#3787#0" expanded="true" />
-            <element signature="e#3817#3818#0" expanded="true" />
-            <element signature="e#3853#3854#0" expanded="true" />
-            <element signature="e#3885#3886#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/LogEntry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7">
@@ -938,27 +834,6 @@
           <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
           <folding>
             <element signature="e#510#511#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/Fields.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/SltrDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1170,27 +1045,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="62" column="53" lean-forward="false" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/SltrHit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1218,18 +1073,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/SltrHit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/models/TmdbMovie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="61" column="24" lean-forward="false" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1889#1890#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/Fields.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/SltrDocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="40" column="51" lean-forward="false" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+          <folding>
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="239" column="5" lean-forward="false" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
+        <state relative-caret-position="54">
+          <caret line="198" column="61" lean-forward="true" selection-start-line="198" selection-start-column="30" selection-end-line="198" selection-end-column="61" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Exporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="38" column="154" lean-forward="false" selection-start-line="38" selection-start-column="154" selection-end-line="38" selection-end-column="154" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+        <state relative-caret-position="369">
+          <caret line="104" column="28" lean-forward="false" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -21,4 +21,5 @@ public abstract class SltrDocument {
     public List<String> getMatchedQueries() {
         return matchedQueries;
     }
+
 }

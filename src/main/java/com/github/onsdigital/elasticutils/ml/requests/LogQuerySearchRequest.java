@@ -83,5 +83,4 @@ public class LogQuerySearchRequest implements JsonSerializable {
             e.printStackTrace();
         }
     }
-
 }

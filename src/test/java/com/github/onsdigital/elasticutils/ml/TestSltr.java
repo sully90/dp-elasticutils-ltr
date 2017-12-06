@@ -2,10 +2,11 @@ package com.github.onsdigital.elasticutils.ml;
 
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
-import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
-import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.LogEntry;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
 import com.github.onsdigital.elasticutils.ml.query.SltrQueryBuilder;
+import com.github.onsdigital.elasticutils.ml.ranklib.Exporter;
+import com.github.onsdigital.elasticutils.ml.ranklib.models.Judgement;
 import com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest;
 import com.github.onsdigital.elasticutils.ml.requests.models.LogSpecs;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
@@ -15,7 +16,10 @@ import org.elasticsearch.index.query.TermsQueryBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author sullid (David Sullivan) on 05/12/2017
@@ -61,6 +65,15 @@ public class TestSltr {
         return LearnToRankHelper.getLTRClient(HOSTNAME);
     }
 
+    public List<Judgement> generateTestJudgements(int num) {
+        List<Judgement> judgements = new LinkedList<>();
+        for (int i = 0; i < num; i++) {
+            judgements.add(Judgement.randomJudgement(1, "test comment"));
+        }
+
+        return judgements;
+    }
+
     @Test
     public void test() {
         try (LearnToRankClient client = getClient()) {
@@ -82,9 +95,21 @@ public class TestSltr {
 
             SltrResponse response = client.sltr(INDEX, searchRequest, 10);
             List<TmdbMovie> movies = response.getHits().asClass(TmdbMovie.class);
-            Fields fields = movies.get(0).getFields();
-            LogEntry entry = fields.getLtrLogList().get(0).get("log_entry").get(0);
-            System.out.println(entry.getName() + " : " + entry.getValue());
+            List<Judgement> judgements = generateTestJudgements(movies.size());
+            Map<Judgement, SltrDocument> queryFeatureMap = new HashMap<>();
+
+            for (int i = 0; i < movies.size(); i++) {
+                queryFeatureMap.put(judgements.get(i), movies.get(i));
+            }
+
+            String outPath = "/Users/sullid/idea/elasticsearch-learning-to-rank/demo";
+            String fileName = "java_sample_judgements_wfeatures.txt";
+
+            List<String> rankLibFormat = Exporter.toRankLibFormat(queryFeatureMap);
+
+            System.out.println(rankLibFormat);
+
+            Exporter.export(outPath + "/" + fileName, queryFeatureMap);
 
         } catch (Exception e) {
             Assert.fail(e.getMessage());
