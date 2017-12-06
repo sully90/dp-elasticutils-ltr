@@ -2,10 +2,13 @@ package com.github.onsdigital.elasticutils.ml.client.response.features.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -66,6 +69,18 @@ public class Feature {
 
     public Map<String, Object> getTemplate() {
         return template;
+    }
+
+    public void writeJsonToFile(File file) throws IOException {
+        String json = JsonUtils.toJson(this);
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(json);
+        fileWriter.flush();
+    }
+
+    public static Feature fromJsonFile(File file) throws IOException {
+        Feature feature = JsonUtils.MAPPER.readValue(file, Feature.class);
+        return feature;
     }
 
     public static Feature matchFeature(String name, String field) throws IOException {

@@ -10,6 +10,8 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.TermsQueryBuilder;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -61,6 +63,20 @@ public class LogQuerySearchRequest implements JsonSerializable {
 
     public String toJsonWithSize(int size) throws IOException {
         return JsonUtils.toJson(this.getQueryMap(size), true);
+    }
+
+    public void toFile(File file) throws IOException {
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(this.toJson());
+        fileWriter.flush();
+    }
+
+    public static String readJsonFromFile(File file) throws IOException {
+        String json = JsonUtils.MAPPER.readValue(file, String.class);
+        if (!json.contains(SltrQueryBuilder.NAME) || !json.contains("ltr_log")) {
+            throw new UnsupportedOperationException("Json file does not contain either a sltr or ext block");
+        }
+        return json;
     }
 
     public static void main(String[] args) {

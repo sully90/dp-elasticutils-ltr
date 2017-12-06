@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,5 +64,15 @@ public class FeatureSet {
             return (otherFeatureSet.getName().equals(this.getName()));
         }
         return false;
+    }
+
+    public static FeatureSet readFromJsonFiles(String name, File[] files) throws IOException {
+        FeatureSet featureSet = new FeatureSet(name);
+        for (File file : files) {
+            Feature feature = Feature.fromJsonFile(file);
+            featureSet.featureList.add(feature);
+        }
+
+        return featureSet;
     }
 }
