@@ -9,6 +9,7 @@ import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -66,13 +67,20 @@ public class FeatureSet {
         return false;
     }
 
-    public static FeatureSet readFromJsonFiles(String name, File[] files) throws IOException {
-        FeatureSet featureSet = new FeatureSet(name);
+    public static FeatureSet readFromDirectory(File directory) throws IOException {
+        if (!directory.isDirectory()) {
+            throw new IOException("Must supply directory containing json (feature) files.");
+        }
+        String name = directory.getName();
+
+        List<Feature> features = new LinkedList<>();
+
+        File[] files = directory.listFiles(File::isFile);
         for (File file : files) {
             Feature feature = Feature.fromJsonFile(file);
-            featureSet.featureList.add(feature);
+            features.add(feature);
         }
 
-        return featureSet;
+        return new FeatureSet(name, features);
     }
 }
