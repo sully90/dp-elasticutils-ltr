@@ -67,6 +67,24 @@ public class FeatureSet {
         return false;
     }
 
+    @JsonIgnore
+    public void dump(File parentDirectory) throws IOException {
+        // Create a directory containing feature json files
+
+        String featureSetDirectoryName = parentDirectory.getAbsolutePath() + "/" + this.getName();
+        File featureSetDirectory = new File(featureSetDirectoryName);
+
+        if (!featureSetDirectory.isDirectory()) {
+            featureSetDirectory.mkdir();
+        }
+
+        for (Feature feature : this.getFeatureList()) {
+            String featureFilename = featureSetDirectory.getAbsolutePath() + "/" + feature.getName() + ".json";
+            File featureFile = new File(featureFilename);
+            feature.writeJsonToFile(featureFile);
+        }
+    }
+
     public static FeatureSet readFromDirectory(File directory) throws IOException {
         if (!directory.isDirectory()) {
             throw new IOException("Must supply directory containing json (feature) files.");

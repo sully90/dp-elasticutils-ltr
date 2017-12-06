@@ -1,5 +1,6 @@
 package com.github.onsdigital.elasticutils.ml.client.response.features;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.onsdigital.elasticutils.ml.client.response.AbstractHit;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.FeatureSet;
@@ -22,6 +23,7 @@ public class LearnToRankHit extends AbstractHit {
         return source;
     }
 
+    @JsonIgnore
     public FeatureSet getFeatureSet() {
         return source.getFeatureSet();
     }
