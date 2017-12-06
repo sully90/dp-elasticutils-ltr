@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bfd6f53-8793-492f-8c87-f9d7fd1ea245" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/Fields.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/models/Fields.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/query/SltrQueryBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/query/SltrQueryBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java" afterPath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -43,8 +38,8 @@
       <file leaf-file-name="TestSltr.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="86" column="44" lean-forward="true" selection-start-line="86" selection-start-column="44" selection-end-line="86" selection-end-column="44" />
+            <state relative-caret-position="-651">
+              <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -681,7 +676,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25786802" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25786802" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1177,8 +1172,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="86" column="44" lean-forward="true" selection-start-line="86" selection-start-column="44" selection-end-line="86" selection-end-column="44" />
+        <state relative-caret-position="-651">
+          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

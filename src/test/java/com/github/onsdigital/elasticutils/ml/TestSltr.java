@@ -3,21 +3,19 @@ package com.github.onsdigital.elasticutils.ml;
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
-import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
 import com.github.onsdigital.elasticutils.ml.query.SltrQueryBuilder;
-import com.github.onsdigital.elasticutils.ml.ranklib.Exporter;
 import com.github.onsdigital.elasticutils.ml.ranklib.models.Judgement;
 import com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest;
-import com.github.onsdigital.elasticutils.ml.requests.models.LogSpecs;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.TermsQueryBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
