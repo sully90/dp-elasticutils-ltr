@@ -37,7 +37,7 @@ public class TestSltr {
             "                {\n" +
             "                    \"sltr\": {\n" +
             "                        \"_name\": \"logged_featureset\",\n" +
-            "                        \"featureset\": \"more_movie_features\",\n" +
+            "                        \"featureset\": \"movie_features\",\n" +
             "                        \"params\": {\n" +
             "                            \"keywords\": \"rambo\"\n" +
             "                        }\n" +
@@ -70,21 +70,21 @@ public class TestSltr {
     public void test() {
         try (LearnToRankClient client = getClient()) {
 
-            SltrResponse response = client.sltr(INDEX, QUERY);
-            List<TmdbMovie> movies = response.getHits().asClass(TmdbMovie.class);
-            Fields fields = movies.get(0).getFields();
-            LogEntry entry = fields.getLtrLogList().get(0).get("log_entry").get(0);
-            System.out.println(entry.getName() + " : " + entry.getValue());
-
             QueryBuilder filterQuery = getQuery();
 
-            SltrQuery sltrQuery = new SltrQuery("logged_featureset", "more_movie_features");
+            SltrQuery sltrQuery = new SltrQuery("logged_featureset", "movie_features");
             sltrQuery.setParam("keywords", "rambo");
 
             LogSpecs logSpecs = new LogSpecs("log_entry", "logged_featureset");
 
             LoggingQuery loggingQuery = new LoggingQuery(filterQuery, sltrQuery, logSpecs);
             System.out.println(loggingQuery.toJson());
+
+            SltrResponse response = client.sltr(INDEX, loggingQuery);
+            List<TmdbMovie> movies = response.getHits().asClass(TmdbMovie.class);
+            Fields fields = movies.get(0).getFields();
+            LogEntry entry = fields.getLtrLogList().get(0).get("log_entry").get(0);
+            System.out.println(entry.getName() + " : " + entry.getValue());
 
         } catch (Exception e) {
             Assert.fail(e.getMessage());

@@ -8,6 +8,7 @@ import com.github.onsdigital.elasticutils.ml.client.response.features.models.Fea
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
 import com.github.onsdigital.elasticutils.ml.ranklib.models.RankLibModel;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
+import com.github.onsdigital.elasticutils.ml.requests.LoggingQuery;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
@@ -163,8 +164,9 @@ public class LearnToRankClient implements AutoCloseable {
 
     // SLTR SEARCH //
 
-    public SltrResponse sltr(String index, String jsonRequest) throws IOException {
+    public SltrResponse sltr(String index, LoggingQuery loggingQuery) throws IOException {
         String api = endpoint(false, Operation.SEARCH.getOperation());
+        String jsonRequest = loggingQuery.toJson();
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
         return SltrResponse.fromResponse(response);
     }

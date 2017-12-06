@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * @author sullid (David Sullivan) on 05/12/2017
@@ -25,11 +23,6 @@ public class Runner {
         this.model = model;
         this.judgementWithFeaturesFile = judgementWithFeaturesFile;
         this.modelOutput = modelOutput;
-    }
-
-    public String readModel() throws IOException {
-        String content = new String(Files.readAllBytes(Paths.get(this.modelOutput)));
-        return content;
     }
 
     public int run() throws IOException, InterruptedException {
@@ -69,23 +62,6 @@ public class Runner {
             throw new IOException("Unable to locate RankLib-2.8.jar in the classpath");
         }
         return url.getPath();
-    }
-
-    public static void main(String[] args) {
-        int model = 6;
-        String baseDir = "/Users/sullid/idea/elasticsearch-learning-to-rank/demo/";
-        String judgementsWithFeatures = baseDir + "sample_judgements_wfeatures.txt";
-        String modelOutput = baseDir + "model_java.txt";
-        Runner runner = new Runner(model, judgementsWithFeatures, modelOutput);
-        try {
-            runner.run();
-
-            System.out.println(runner.readModel());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }
