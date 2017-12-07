@@ -22,8 +22,12 @@ import java.util.Map;
  */
 public class LogQuerySearchRequest implements JsonSerializable {
 
-    private final QueryBuilder loggingQuery;
-    private final LogSpecs logSpecs;
+    private QueryBuilder loggingQuery;
+    private LogSpecs logSpecs;
+
+    private LogQuerySearchRequest(LogSpecs logSpecs) {
+        this.logSpecs = logSpecs;
+    }
 
     public LogQuerySearchRequest(QueryBuilder loggingQuery, LogSpecs logSpecs) {
         if (!loggingQuery.toString().contains(SltrQueryBuilder.NAME)) {

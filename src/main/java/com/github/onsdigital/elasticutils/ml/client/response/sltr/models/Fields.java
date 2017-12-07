@@ -15,8 +15,6 @@ public class Fields {
 
     @JsonProperty("_ltrlog")
     private List<Map<String, List<LogEntry>>> ltrLogList;
-    @JsonProperty("matched_queries")
-    private List<String> matchedQueries;
 
     private Fields() {
         // For Jackson
@@ -26,17 +24,13 @@ public class Fields {
         return ltrLogList;
     }
 
-    public List<String> getMatchedQueries() {
-        return matchedQueries;
-    }
-
     @JsonIgnore
     public List<Float> getValues() {
         List<Float> values = new LinkedList<>();
         for (Map<String, List<LogEntry>> entry : this.ltrLogList) {
             for (String key : entry.keySet()) {
                 for (LogEntry logEntry : entry.get(key)) {
-                    values.add(new Float(logEntry.getValue()));
+                    values.add(logEntry.getValue());
                 }
             }
         }

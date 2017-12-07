@@ -169,6 +169,12 @@ public class LearnToRankClient implements AutoCloseable {
         return SltrResponse.fromResponse(response);
     }
 
+    public SltrResponse sltr(String index, String logQuery) throws IOException {
+        String api = endpoint(false, Operation.SEARCH.getOperation());
+        Response response = this.post(api, Collections.emptyMap(), logQuery);
+        return SltrResponse.fromResponse(response);
+    }
+
     @Override
     public void close() throws Exception {
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Closing RestClient");
