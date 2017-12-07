@@ -25,10 +25,6 @@ public class LogQuerySearchRequest implements JsonSerializable {
     private QueryBuilder loggingQuery;
     private LogSpecs logSpecs;
 
-    private LogQuerySearchRequest(LogSpecs logSpecs) {
-        this.logSpecs = logSpecs;
-    }
-
     public LogQuerySearchRequest(QueryBuilder loggingQuery, LogSpecs logSpecs) {
         if (!loggingQuery.toString().contains(SltrQueryBuilder.NAME)) {
             throw new UnsupportedOperationException("Must supply a sltr query");
