@@ -107,6 +107,14 @@ public class LearnToRankClient implements AutoCloseable {
         return this.delete(LTR_INDEX, Collections.emptyMap());
     }
 
+    public LearnToRankListResponse listFeatureSets() throws IOException {
+        String api = endpoint(true, LearnToRankEndPoint.FEATURESET);
+        Map<String, String> params = Collections.EMPTY_MAP;
+
+        Response response = this.get(api, params);
+        return LearnToRankListResponse.fromResponse(response);
+    }
+
     /**
      *
      * @param name
@@ -125,21 +133,13 @@ public class LearnToRankClient implements AutoCloseable {
         return this.delete(api, Collections.emptyMap());
     }
 
-    public LearnToRankListResponse listFeatureSets() throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET);
-        Map<String, String> params = Collections.EMPTY_MAP;
-
-        Response response = this.get(api, params);
-        return LearnToRankListResponse.fromResponse(response);
-    }
-
-    public Response addFeatureSet(FeatureSetRequest request) throws IOException {
+    public Response createFeatureSet(FeatureSetRequest request) throws IOException {
         String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), request.getName());
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Adding featureset with name {} : {}", request.getName(), api);
         return this.put(api, Collections.emptyMap(), request.toJson());
     }
 
-    public Response addToFeatureSet(String name, List<Feature> featureList) throws IOException {
+    public Response appendToFeatureSet(String name, LinkedList<Feature> featureList) throws IOException {
         String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), name, LearnToRankEndPoint.ADD_FEATURES.getEndPoint());
         FeatureSet featureSet = new FeatureSet(null, featureList);
 

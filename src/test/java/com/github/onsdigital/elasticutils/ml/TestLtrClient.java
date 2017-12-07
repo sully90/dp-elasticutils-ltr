@@ -1,6 +1,5 @@
 package com.github.onsdigital.elasticutils.ml;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
 import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankGetResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.Feature;
@@ -10,14 +9,10 @@ import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 /**
  * @author sullid (David Sullivan) on 04/12/2017
@@ -44,8 +39,8 @@ public class TestLtrClient {
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         }
-        List<Feature> features = new ArrayList<Feature>();
-        List<Feature> newFeatures = new ArrayList<Feature>();
+        LinkedList<Feature> features = new LinkedList<Feature>();
+        LinkedList<Feature> newFeatures = new LinkedList<Feature>();
         features.add(feature);
         newFeatures.add(newFeature);
 
@@ -64,7 +59,7 @@ public class TestLtrClient {
             if (!featureStoreExists) {
                 client.initFeatureStore();
             }
-            client.addFeatureSet(request);
+            client.createFeatureSet(request);
 
             LearnToRankGetResponse response = client.getFeatureSetByName(request.getName());
             assertEquals(response.getSource().getFeatureSet(), request.getFeatureSet());
@@ -73,7 +68,7 @@ public class TestLtrClient {
             assertEquals(response.getSource().getFeatureSet().getFeatureList().size(), 1);
 
             // Add a new feature
-            client.addToFeatureSet(request.getName(), newFeatures);
+            client.appendToFeatureSet(request.getName(), newFeatures);
             // Perform the GET again
             response = client.getFeatureSetByName(request.getName());
             // Assert the new feature was added

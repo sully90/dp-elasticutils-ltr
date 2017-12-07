@@ -8,7 +8,6 @@ import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,10 +21,10 @@ public class FeatureSet {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
-    private List<Feature> featureList;
+    private LinkedList<Feature> featureList;
 
     private FeatureSet() {
-        this.featureList = new ArrayList<>();
+        this.featureList = new LinkedList<>();
     }
 
     public FeatureSet(String name) {
@@ -33,7 +32,7 @@ public class FeatureSet {
         this.name = name;
     }
 
-    public FeatureSet(String name, List<Feature> featureList) {
+    public FeatureSet(String name, LinkedList<Feature> featureList) {
         this.name = name;
         this.featureList = featureList;
     }
@@ -91,7 +90,7 @@ public class FeatureSet {
         }
         String name = directory.getName();
 
-        List<Feature> features = new LinkedList<>();
+        LinkedList<Feature> features = new LinkedList<>();
 
         File[] files = directory.listFiles(File::isFile);
         for (File file : files) {
