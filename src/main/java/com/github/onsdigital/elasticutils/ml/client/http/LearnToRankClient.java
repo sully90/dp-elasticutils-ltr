@@ -118,6 +118,16 @@ public class LearnToRankClient implements AutoCloseable {
     /**
      *
      * @param name
+     * @return true is featureSet with this name exists
+     */
+    public boolean featureSetExists(String name) throws IOException {
+        LearnToRankGetResponse response = this.getFeatureSetByName(name);
+        return response.isFound();
+    }
+
+    /**
+     *
+     * @param name
      * @return Response
      * @throws IOException
      *
