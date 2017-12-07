@@ -74,9 +74,9 @@ public class LogQuerySearchRequest implements JsonSerializable {
         return json;
     }
 
-    public static LogQuerySearchRequest getRequestForQuery(TermsQueryBuilder termQueryBuilder, SltrQueryBuilder sltrQueryBuilder) {
+    public static LogQuerySearchRequest getRequestForQuery(QueryBuilder queryBuilder, SltrQueryBuilder sltrQueryBuilder) {
         QueryBuilder qb = QueryBuilders.boolQuery()
-                .filter(termQueryBuilder)
+                .filter(queryBuilder)
                 .filter(sltrQueryBuilder);
         LogSpecs logSpecs = LogSpecs.fromQuery("log_entry", sltrQueryBuilder);
         return new LogQuerySearchRequest(qb, logSpecs);
