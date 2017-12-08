@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.onsdigital.elasticutils.ml.client.response.AbstractHit;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Rankable;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 
@@ -17,7 +18,7 @@ import java.util.Map;
  * @author sullid (David Sullivan) on 05/12/2017
  * @project dp-elasticutils-ltr
  */
-public class SltrHit<T> extends AbstractHit {
+public class SltrHit<T> extends AbstractHit implements Rankable {
 
     @JsonProperty("_source")
     private Map<String, Object> source;
@@ -33,6 +34,7 @@ public class SltrHit<T> extends AbstractHit {
         return source;
     }
 
+    @Override
     public Fields getFields() {
         return fields;
     }
