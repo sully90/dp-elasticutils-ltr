@@ -2,7 +2,7 @@ package com.github.onsdigital.elasticutils.ml.ranklib;
 
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.LogEntry;
-import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.SltrDocument;
+import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Rankable;
 import com.github.onsdigital.elasticutils.ml.ranklib.models.Judgement;
 
 import java.io.IOException;
@@ -22,9 +22,9 @@ import java.util.StringJoiner;
  */
 public class Exporter {
 
-    private static String format(Judgement judgement, SltrDocument document) {
+    private static String format(Judgement judgement, Rankable rankable) {
         StringJoiner joiner = new StringJoiner("\t");
-        Fields fields = document.getFields();
+        Fields fields = rankable.getFields();
 
         for (Map<String, List<LogEntry>> entry : fields.getLtrLogList()) {
             for (String key : entry.keySet()) {
@@ -42,7 +42,7 @@ public class Exporter {
         }
     }
 
-    public static List<String> toRankLibFormat(Map<Judgement, SltrDocument> queryFeatureMap) {
+    public static List<String> toRankLibFormat(Map<Judgement, Rankable> queryFeatureMap) {
         List<String> output = new LinkedList<>();
 
         for (Judgement judgement : queryFeatureMap.keySet()) {
@@ -52,12 +52,12 @@ public class Exporter {
         return output;
     }
 
-    public static void export(String filePath, Map<Judgement, SltrDocument> queryFeatureMap) throws IOException {
+    public static void export(String filePath, Map<Judgement, Rankable> queryFeatureMap) throws IOException {
         Path path = Paths.get(filePath);
         export(path, queryFeatureMap);
     }
 
-    public static void export(Path filePath, Map<Judgement, SltrDocument> queryFeatureMap) throws IOException {
+    public static void export(Path filePath, Map<Judgement, Rankable> queryFeatureMap) throws IOException {
         List<String> rankLibFormatted = toRankLibFormat(queryFeatureMap);
         Files.write(filePath, rankLibFormatted);
     }

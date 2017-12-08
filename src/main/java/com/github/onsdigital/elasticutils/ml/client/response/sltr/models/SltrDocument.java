@@ -8,12 +8,13 @@ import java.util.List;
  * @author sullid (David Sullivan) on 05/12/2017
  * @project dp-elasticutils-ltr
  */
-public abstract class SltrDocument {
+public abstract class SltrDocument implements Rankable {
 
     private Fields fields;
     @JsonProperty("matched_queries")
     private List<String> matchedQueries;
 
+    @Override
     public Fields getFields() {
         return fields;
     }
