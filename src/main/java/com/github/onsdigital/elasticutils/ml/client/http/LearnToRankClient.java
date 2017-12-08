@@ -13,16 +13,14 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
 import org.apache.http.nio.entity.NStringEntity;
-import org.elasticsearch.client.Response;
-import org.elasticsearch.client.ResponseException;
-import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestClientBuilder;
+import org.elasticsearch.client.*;
 import org.elasticsearch.common.Strings;
 import org.elasticsearch.xpack.common.http.HttpMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.*;
 
 /**
@@ -256,6 +254,26 @@ public class LearnToRankClient implements AutoCloseable {
 
         public String getOperation() {
             return operation;
+        }
+    }
+
+    public static class ShutDownClientThread extends Thread {
+
+        private static final Logger LOGGER = LoggerFactory.getLogger(ShutDownClientThread.class);
+
+        private LearnToRankClient client;
+
+        public ShutDownClientThread(LearnToRankClient client) {
+            this.client = client;
+        }
+
+        @Override
+        public void run() {
+            try {
+                client.close();
+            } catch (Exception e) {
+                LOGGER.error("Failed to shut down LearnToRankClient.", e);
+            }
         }
     }
 
