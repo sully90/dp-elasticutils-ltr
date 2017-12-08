@@ -40,7 +40,21 @@ public class LogQuerySearchRequest implements JsonSerializable {
      */
     @JsonIgnore
     private Map<String, Object> getQueryMap() throws IOException {
+        return this.getQueryMap(-1);
+    }
+
+    /**
+     *
+     * @return Map representation of the Elasticsearch query
+     * @throws IOException
+     */
+    @JsonIgnore
+    private Map<String, Object> getQueryMap(int size) throws IOException {
         Map<String, Object> queryMap = new LinkedHashMap<>();
+
+        if (size > 0) {
+            queryMap.put("size", size);
+        }
 
         Map<String, Object> qbMap = JsonUtils.MAPPER.readValue(this.loggingQuery.toString(), new TypeReference<Map<String, Object>>(){});
         queryMap.put("query", qbMap);
@@ -57,7 +71,16 @@ public class LogQuerySearchRequest implements JsonSerializable {
      */
     @Override
     public String toJson() throws IOException {
-        return JsonUtils.toJson(this.getQueryMap(), true);
+        return this.toJson(-1);
+    }
+
+    /**
+     *
+     * @return JSON representation of a LogQuerySearchRequest, used to extract feature scores out of Learn to Rank
+     * @throws IOException
+     */
+    public String toJson(int size) throws IOException {
+        return JsonUtils.toJson(this.getQueryMap(size), true);
     }
 
     public void toFile(File file) throws IOException {
