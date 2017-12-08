@@ -40,6 +40,11 @@ public class RankLibModel {
         return content;
     }
 
+    public static RankLibModel fromFile(String name, String filename) throws IOException {
+        String content = getDefinition(filename);
+        return new RankLibModel(name, content);
+    }
+
     private class Model {
         private final String type = "model/ranklib";
         private String definition;
