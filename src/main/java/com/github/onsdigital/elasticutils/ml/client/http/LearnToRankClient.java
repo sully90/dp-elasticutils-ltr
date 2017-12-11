@@ -41,21 +41,25 @@ public class LearnToRankClient implements AutoCloseable {
         this.restClient = restClientBuilder.build();
     }
 
-    public Response get(String apiEndPoint, Map<String, String> params) throws IOException {
+    private Response get(String apiEndPoint, Map<String, String> params) throws IOException {
         return this.restClient.performRequest(HttpMethod.GET.method(), apiEndPoint, params);
     }
 
-    public Response put(String apiEndPoint, Map<String, String> params, String json) throws IOException {
+    private Response put(String apiEndPoint, Map<String, String> params) throws IOException {
+        return this.restClient.performRequest(HttpMethod.PUT.method(), apiEndPoint, params);
+    }
+
+    private Response put(String apiEndPoint, Map<String, String> params, String json) throws IOException {
         HttpEntity entity = new NStringEntity(json, ContentType.APPLICATION_JSON);
         return this.restClient.performRequest(HttpMethod.PUT.method(), apiEndPoint, params, entity);
     }
 
-    public Response post(String apiEndPoint, Map<String, String> params, String json) throws IOException {
+    private Response post(String apiEndPoint, Map<String, String> params, String json) throws IOException {
         HttpEntity entity = new NStringEntity(json, ContentType.APPLICATION_JSON);
         return this.restClient.performRequest(HttpMethod.POST.method(), apiEndPoint, params, entity);
     }
 
-    public Response delete(String apiEndPoint, Map<String, String> params) throws IOException {
+    private Response delete(String apiEndPoint, Map<String, String> params) throws IOException {
         return this.restClient.performRequest(HttpMethod.DELETE.method(), apiEndPoint, params);
     }
 
@@ -93,7 +97,7 @@ public class LearnToRankClient implements AutoCloseable {
             LOGGER.debug("Attempt to init FeatureStore which already exists.");
             throw new RuntimeException("FeatureStore already exists");
         }
-        return this.restClient.performRequest(HttpMethod.PUT.method(), LTR_INDEX, Collections.emptyMap());
+        return this.put(LTR_INDEX, Collections.emptyMap());
     }
 
     /**
