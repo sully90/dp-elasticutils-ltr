@@ -20,4 +20,13 @@ public enum ModelType {
     public String getModelType() {
         return String.format("%s/%s", PREFIX, this.modelType);
     }
+
+    public static ModelType fromString(String type) {
+        for (ModelType modelType : ModelType.values()) {
+            if (type.equals(modelType.getModelType())) {
+                return modelType;
+            }
+        }
+        throw new UnsupportedOperationException("Model with type: " + type + " not implemented");
+    }
 }

@@ -80,7 +80,7 @@ public class RankLibModel {
 
             String featureset = "movie_features";
 
-            Response response = client.uploadModel(featureset, model);
+            Response response = client.createModel(featureset, model);
             String entity = EntityUtils.toString(response.getEntity());
 
             System.out.println(entity);
