@@ -21,6 +21,7 @@ public abstract class AbstractHit {
         return index;
     }
 
+    @JsonProperty("_type")
     public String getType() {
         return type;
     }

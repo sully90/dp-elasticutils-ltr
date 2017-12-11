@@ -14,16 +14,16 @@ public class LearnToRankListResponse extends AbstractResponse {
 
     private LearnToRankHits hits;
 
-    public static LearnToRankListResponse fromResponse(Response response) throws IOException {
-        ResponseUtils<LearnToRankListResponse> responseUtils = new ResponseUtils();
-        return responseUtils.fromResponse(response, LearnToRankListResponse.class);
-    }
-
     protected LearnToRankListResponse() {
 
     }
 
     public LearnToRankHits getHits() {
         return hits;
+    }
+
+    public static LearnToRankListResponse fromResponse(Response response) throws IOException {
+        ResponseUtils<LearnToRankListResponse> responseUtils = new ResponseUtils();
+        return responseUtils.fromResponse(response, LearnToRankListResponse.class);
     }
 }

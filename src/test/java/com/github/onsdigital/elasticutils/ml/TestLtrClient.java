@@ -22,36 +22,49 @@ public class TestLtrClient {
 
     private static final String HOSTNAME = "localhost";
 
+    private static String FEATURESET_NAME = "java-test-feature-set";
+    private static final String NAME = "match_query";
+    private static final String FIELD = "title";
+
     public LearnToRankClient getClient() {
         return LearnToRankHelper.getLTRClient(HOSTNAME);
     }
 
-    @Test
-    public void testFeatureSetCreation() {
-        String name = "match_query";
-        String field = "title";
-
+    private static FeatureSetRequest getFeatureSetRequest() {
         Feature feature = null;
-        Feature newFeature = null;
         try {
-            feature = Feature.matchFeature(name, field);
-            newFeature = Feature.matchFeature(name + "_new", field);
+            feature = Feature.matchFeature(NAME, FIELD);
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         }
         LinkedList<Feature> features = new LinkedList<Feature>();
-        LinkedList<Feature> newFeatures = new LinkedList<Feature>();
-        features.add(feature);
-        newFeatures.add(newFeature);
 
-        FeatureSet featureSet = new FeatureSet("java-test-feature-set", features);
+        features.add(feature);
+
+        FeatureSet featureSet = new FeatureSet(FEATURESET_NAME, features);
         FeatureSetRequest request = new FeatureSetRequest(featureSet);
 
+        return request;
+    }
+
+    @Test
+    public void testFeatureSetCreation() {
+
+        FeatureSetRequest request = getFeatureSetRequest();
         try {
             System.out.println(request.toJson());
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         }
+
+        Feature newFeature = null;
+        try {
+            newFeature = Feature.matchFeature(NAME + "_new", FIELD);
+        } catch (IOException e) {
+            Assert.fail(e.getMessage());
+        }
+        LinkedList<Feature> newFeatures = new LinkedList<Feature>();
+        newFeatures.add(newFeature);
 
         try (LearnToRankClient client = getClient()) {
             boolean featureStoreExists = client.featureStoreExists();

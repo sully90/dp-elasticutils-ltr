@@ -19,6 +19,7 @@ public class LearnToRankHit extends AbstractHit {
 
     }
 
+    @JsonProperty("_source")
     public FeatureSetRequest getSource() {
         return source;
     }

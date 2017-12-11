@@ -1,6 +1,7 @@
 package com.github.onsdigital.elasticutils.ml.ranklib.models;
 
 import com.github.onsdigital.elasticutils.ml.client.http.LearnToRankClient;
+import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.Response;
@@ -18,9 +19,9 @@ public class RankLibModel {
     private String name;
     private Model model;
 
-    public RankLibModel(String name, String definition) {
+    public RankLibModel(String name, ModelType type, String definition) {
         this.name = name;
-        this.model = new Model(definition);
+        this.model = new Model(type, definition);
     }
 
     private RankLibModel() {
@@ -40,16 +41,18 @@ public class RankLibModel {
         return content;
     }
 
-    public static RankLibModel fromFile(String name, String filename) throws IOException {
+    public static RankLibModel fromFile(String name, ModelType type, String filename) throws IOException {
         String content = getDefinition(filename);
-        return new RankLibModel(name, content);
+        return new RankLibModel(name, type, content);
     }
 
     private class Model {
-        private final String type = "model/ranklib";
+
+        private String type;
         private String definition;
 
-        public Model(String definition) {
+        public Model(ModelType type, String definition) {
+            this.type = type.getModelType();
             this.definition = definition;
         }
 
@@ -69,7 +72,11 @@ public class RankLibModel {
     public static void main(String[] args) {
         try (LearnToRankClient client = LearnToRankHelper.getLTRClient("localhost")) {
             String filename = "/Users/sullid/idea/elasticsearch-learning-to-rank/demo/model_java.txt";
-            RankLibModel model = new RankLibModel("test_6", RankLibModel.getDefinition(filename));
+            String content = RankLibModel.getDefinition(filename);
+            RankLibModel model = new RankLibModel("test_6", ModelType.RANKLIB, content);
+
+            String json = JsonUtils.toJson(model);
+            System.out.println(json);
 
             String featureset = "movie_features";
 
@@ -77,6 +84,12 @@ public class RankLibModel {
             String entity = EntityUtils.toString(response.getEntity());
 
             System.out.println(entity);
+
+            Response getResponse = client.getModel(model.getName());
+            String getEntity = EntityUtils.toString(getResponse.getEntity());
+            System.out.println(getEntity);
+
+//            client.deleteModel(model.getName());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -13,14 +13,16 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
 import org.apache.http.nio.entity.NStringEntity;
-import org.elasticsearch.client.*;
+import org.elasticsearch.client.Response;
+import org.elasticsearch.client.ResponseException;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.common.Strings;
 import org.elasticsearch.xpack.common.http.HttpMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.*;
 
 /**
@@ -161,6 +163,18 @@ public class LearnToRankClient implements AutoCloseable {
 
     // MODEL CRUD //
 
+    public Response listModels() throws IOException {
+        String api = endpoint(true, LearnToRankEndPoint.MODEL);
+
+        return this.get(api, Collections.emptyMap());
+    }
+
+    public Response getModel(String name) throws IOException {
+        String api = endpoint(true, LearnToRankEndPoint.MODEL.getEndPoint(), name);
+
+        return this.get(api, Collections.emptyMap());
+    }
+
     public Response uploadModel(String featureSet, RankLibModel model) throws IOException {
         final Map<String, RankLibModel> request = new HashMap<String, RankLibModel>() {{
             put("model", model);
@@ -170,6 +184,12 @@ public class LearnToRankClient implements AutoCloseable {
                 featureSet, LearnToRankEndPoint.CREATE_MODEL.getEndPoint());
 
         return this.post(api, Collections.emptyMap(), JsonUtils.toJson(request));
+    }
+
+    public Response deleteModel(String name) throws IOException {
+        String api = endpoint(true, LearnToRankEndPoint.MODEL.getEndPoint(), name);
+
+        return this.delete(api, Collections.emptyMap());
     }
 
     // SLTR SEARCH //
@@ -230,7 +250,8 @@ public class LearnToRankClient implements AutoCloseable {
     enum LearnToRankEndPoint {
         FEATURESET("_featureset"),
         ADD_FEATURES("_addfeatures"),
-        CREATE_MODEL("_createmodel");
+        CREATE_MODEL("_createmodel"),
+        MODEL("_model");
 
         private String endPoint;
 
