@@ -67,7 +67,7 @@ public class LearnToRankClient implements AutoCloseable {
      * @throws IOException
      */
     public boolean featureStoreExists() throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET);
+        String api = endpoint(true, EndPoint.FEATURESET);
         try {
             Response response = this.get(api, Collections.emptyMap());
             return response.getStatusLine().getStatusCode() == HttpStatus.SC_OK;
@@ -108,7 +108,7 @@ public class LearnToRankClient implements AutoCloseable {
     }
 
     public LearnToRankListResponse listFeatureSets() throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET);
+        String api = endpoint(true, EndPoint.FEATURESET);
         Map<String, String> params = Collections.EMPTY_MAP;
 
         Response response = this.get(api, params);
@@ -122,7 +122,7 @@ public class LearnToRankClient implements AutoCloseable {
      */
     public boolean featureSetExists(String name) throws IOException {
         try {
-            LearnToRankGetResponse response = this.getFeatureSetByName(name);
+            LearnToRankGetResponse response = this.getFeatureSet(name);
             return response.isFound();
         } catch (ResponseException e) {
             return false;
@@ -137,24 +137,24 @@ public class LearnToRankClient implements AutoCloseable {
      *
      * Gets a featureset by its name
      */
-    public LearnToRankGetResponse getFeatureSetByName(String name) throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
+    public LearnToRankGetResponse getFeatureSet(String name) throws IOException {
+        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), name);
         return LearnToRankGetResponse.fromResponse(this.get(api, Collections.emptyMap()));
     }
 
-    public Response deleteFeatureSetByName(String name) throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), name);
+    public Response deleteFeatureSet(String name) throws IOException {
+        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), name);
         return this.delete(api, Collections.emptyMap());
     }
 
     public Response createFeatureSet(FeatureSetRequest request) throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), request.getName());
+        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), request.getName());
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Adding featureset with name {} : {}", request.getName(), api);
         return this.put(api, Collections.emptyMap(), request.toJson());
     }
 
     public Response appendToFeatureSet(String name, LinkedList<Feature> featureList) throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(), name, LearnToRankEndPoint.ADD_FEATURES.getEndPoint());
+        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), name, EndPoint.ADD_FEATURES.getEndPoint());
         FeatureSet featureSet = new FeatureSet(null, featureList);
 
         String json = featureSet.toJson();
@@ -164,44 +164,44 @@ public class LearnToRankClient implements AutoCloseable {
     // MODEL CRUD //
 
     public Response listModels() throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.MODEL);
+        String api = endpoint(true, EndPoint.MODEL);
 
         return this.get(api, Collections.emptyMap());
     }
 
     public Response getModel(String name) throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.MODEL.getEndPoint(), name);
+        String api = endpoint(true, EndPoint.MODEL.getEndPoint(), name);
 
         return this.get(api, Collections.emptyMap());
     }
 
-    public Response uploadModel(String featureSet, RankLibModel model) throws IOException {
+    public Response createModel(String featureSet, RankLibModel model) throws IOException {
         final Map<String, RankLibModel> request = new HashMap<String, RankLibModel>() {{
             put("model", model);
         }};
 
-        String api = endpoint(true, LearnToRankEndPoint.FEATURESET.getEndPoint(),
-                featureSet, LearnToRankEndPoint.CREATE_MODEL.getEndPoint());
+        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(),
+                featureSet, EndPoint.CREATE_MODEL.getEndPoint());
 
         return this.post(api, Collections.emptyMap(), JsonUtils.toJson(request));
     }
 
     public Response deleteModel(String name) throws IOException {
-        String api = endpoint(true, LearnToRankEndPoint.MODEL.getEndPoint(), name);
+        String api = endpoint(true, EndPoint.MODEL.getEndPoint(), name);
 
         return this.delete(api, Collections.emptyMap());
     }
 
     // SLTR SEARCH //
 
-    public SltrResponse sltr(String index, LogQuerySearchRequest logQuery) throws IOException {
+    public SltrResponse search(String index, LogQuerySearchRequest logQuery) throws IOException {
         String api = endpoint(false, Operation.SEARCH.getOperation());
         String jsonRequest = logQuery.toJson();
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
         return SltrResponse.fromResponse(response);
     }
 
-    public SltrResponse sltr(String index, String logQuery) throws IOException {
+    public SltrResponse search(String index, String logQuery) throws IOException {
         String api = endpoint(false, Operation.SEARCH.getOperation());
         Response response = this.post(api, Collections.emptyMap(), logQuery);
         return SltrResponse.fromResponse(response);
@@ -220,7 +220,7 @@ public class LearnToRankClient implements AutoCloseable {
         return endpoint(featureCrud, String.join(",", indices), String.join(",", types), endpoint);
     }
 
-    static String endpoint(boolean featureCrud, LearnToRankEndPoint... learnToRankEndPoints) {
+    static String endpoint(boolean featureCrud, EndPoint... learnToRankEndPoints) {
         String[] endPoints = new String[learnToRankEndPoints.length];
 
         for (int i = 0; i < learnToRankEndPoints.length; i++) {
@@ -247,7 +247,7 @@ public class LearnToRankClient implements AutoCloseable {
         return joiner.toString();
     }
 
-    enum LearnToRankEndPoint {
+    enum EndPoint {
         FEATURESET("_featureset"),
         ADD_FEATURES("_addfeatures"),
         CREATE_MODEL("_createmodel"),
@@ -255,7 +255,7 @@ public class LearnToRankClient implements AutoCloseable {
 
         private String endPoint;
 
-        LearnToRankEndPoint(String endPoint) {
+        EndPoint(String endPoint) {
             this.endPoint = endPoint;
         }
 

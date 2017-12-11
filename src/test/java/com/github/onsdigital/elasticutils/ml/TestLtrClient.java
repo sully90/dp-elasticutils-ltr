@@ -74,7 +74,7 @@ public class TestLtrClient {
             }
             client.createFeatureSet(request);
 
-            LearnToRankGetResponse response = client.getFeatureSetByName(request.getName());
+            LearnToRankGetResponse response = client.getFeatureSet(request.getName());
             assertEquals(response.getSource().getFeatureSet(), request.getFeatureSet());
 
             // Assert we only have one feature
@@ -83,12 +83,12 @@ public class TestLtrClient {
             // Add a new feature
             client.appendToFeatureSet(request.getName(), newFeatures);
             // Perform the GET again
-            response = client.getFeatureSetByName(request.getName());
+            response = client.getFeatureSet(request.getName());
             // Assert the new feature was added
             assertEquals(response.getSource().getFeatureSet().getFeatureList().size(), 2);
 
             // Delete
-            client.deleteFeatureSetByName(request.getName());
+            client.deleteFeatureSet(request.getName());
 
             if (!featureStoreExists) {
                 // Cleanup

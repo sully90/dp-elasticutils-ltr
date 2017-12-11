@@ -82,7 +82,7 @@ public class TestSltr {
 
             LogQuerySearchRequest searchRequest = LogQuerySearchRequest.getRequestForQuery(termsQueryBuilder, loggingQueryBuilder);
 
-            SltrResponse response = client.sltr(INDEX, searchRequest);
+            SltrResponse response = client.search(INDEX, searchRequest);
             List<TmdbMovie> movies = response.getHits().asClass(TmdbMovie.class);
 
             assertEquals(movies.size(), 3);

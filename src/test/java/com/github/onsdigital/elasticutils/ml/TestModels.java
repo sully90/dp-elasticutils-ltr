@@ -68,9 +68,6 @@ public class TestModels {
             String content = RankLibModel.getDefinition(filename);
             RankLibModel model = new RankLibModel(MODEL_NAME, ModelType.RANKLIB, content);
 
-            String json = JsonUtils.toJson(model);
-            System.out.println(json);
-
             // Test featureset
             FeatureSetRequest featureSetRequest = getFeatureSetRequest();
 
@@ -82,11 +79,11 @@ public class TestModels {
             }
             client.createFeatureSet(featureSetRequest);
 
-            LearnToRankGetResponse response = client.getFeatureSetByName(featureSetRequest.getName());
+            LearnToRankGetResponse response = client.getFeatureSet(featureSetRequest.getName());
             assertEquals(response.getSource().getFeatureSet(), featureSetRequest.getFeatureSet());
 
             // Upload the model against this featureset
-            Response uploadResponse = client.uploadModel(featureSetRequest.getName(), model);
+            Response uploadResponse = client.createModel(featureSetRequest.getName(), model);
             assertEquals(uploadResponse.getStatusLine().getStatusCode(), HttpStatus.SC_CREATED);
         } catch (IOException e) {
             Assert.fail(e.getMessage());
@@ -114,7 +111,7 @@ public class TestModels {
             Response response = client.deleteModel(MODEL_NAME);
             assertEquals(response.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
 
-            Response deleteFeaturesetResponse = client.deleteFeatureSetByName(featureSetName);
+            Response deleteFeaturesetResponse = client.deleteFeatureSet(featureSetName);
             assertEquals(deleteFeaturesetResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
         } catch (Exception e) {
             Assert.fail(e.getMessage());
