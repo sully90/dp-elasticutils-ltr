@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bfd6f53-8793-492f-8c87-f9d7fd1ea245" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestLtrClient.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestModels.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltr.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/old/TestModels.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dp-elasticutils-ltr.iml" afterPath="$PROJECT_DIR$/dp-elasticutils-ltr.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankGetResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankGetResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankHit.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankHit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankHits.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankHits.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankListResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankListResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/SltrHit.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/sltr/SltrHit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/ResponseUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/ResponseUtils.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,8 +19,8 @@
       <file leaf-file-name="TestFeatureStore.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+            <state relative-caret-position="-101">
+              <caret line="46" column="23" lean-forward="false" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,11 +65,21 @@
       <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="49" column="42" lean-forward="false" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+            <state relative-caret-position="99">
+              <caret line="161" column="24" lean-forward="false" selection-start-line="161" selection-start-column="24" selection-end-line="161" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LearnToRankListResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankListResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -243,6 +242,34 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ml" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-elasticutils-ltr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ml" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="response" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-elasticutils-ltr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ml" type="462c0819:PsiDirectoryNode" />
+              <item name="query" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-elasticutils-ltr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ml" type="462c0819:PsiDirectoryNode" />
               <item name="ranklib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -265,15 +292,6 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dp-elasticutils-ltr" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ml" type="462c0819:PsiDirectoryNode" />
-              <item name="old" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
@@ -607,7 +625,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -946,14 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankListResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/old/TestLtrClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -974,19 +984,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="562">
           <caret line="97" column="51" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding>
-            <marker date="1513075328000" expanded="false" signature="2160:2169" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="49" column="42" lean-forward="false" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1026,10 +1024,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankListResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="161" column="24" lean-forward="false" selection-start-line="161" selection-start-column="24" selection-end-line="161" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+        <state relative-caret-position="-101">
+          <caret line="46" column="23" lean-forward="false" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
