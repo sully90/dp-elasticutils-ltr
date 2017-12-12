@@ -39,6 +39,7 @@ public class SltrHit<T> extends AbstractHit implements Rankable {
         return fields;
     }
 
+    @JsonProperty("matched_queries")
     public List<String> getMatchedQueries() {
         return matchedQueries;
     }

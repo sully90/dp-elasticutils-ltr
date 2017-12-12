@@ -8,15 +8,15 @@ import java.util.List;
  * @author sullid (David Sullivan) on 30/11/2017
  * @project dp-elasticutils-ltr
  */
-public class LearnToRankHits extends AbstractHits {
+public class LearnToRankHits<T> extends AbstractHits {
 
-    private List<LearnToRankHit> hits;
+    private List<LearnToRankHit<T>> hits;
 
     private LearnToRankHits() {
 
     }
 
-    public List<LearnToRankHit> getHits() {
+    public List<LearnToRankHit<T>> getHits() {
         return hits;
     }
 }

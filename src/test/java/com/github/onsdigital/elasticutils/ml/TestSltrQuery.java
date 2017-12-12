@@ -5,13 +5,14 @@ import com.github.onsdigital.elasticutils.ml.client.response.sltr.SltrResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.sltr.models.Fields;
 import com.github.onsdigital.elasticutils.ml.models.TmdbMovie;
 import com.github.onsdigital.elasticutils.ml.query.SltrQueryBuilder;
-import com.github.onsdigital.elasticutils.ml.ranklib.models.Judgement;
 import com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest;
-import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
+import com.github.onsdigital.elasticutils.ml.utils.ClientUtils;
+import com.github.onsdigital.elasticutils.ml.utils.IOUtils;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.TermsQueryBuilder;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,22 +20,26 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @author sullid (David Sullivan) on 05/12/2017
+ * @author sullid (David Sullivan) on 12/12/2017
  * @project dp-elasticutils-ltr
  */
-public class TestSltr {
+public class TestSltrQuery {
 
-    private static final String HOSTNAME = "localhost";
+    // Index to test against
     private static final String INDEX = "tmdb";
 
+    // ids to use for training
     private static final List<Integer> ids = new ArrayList<Integer>() {{
         add(7555);
         add(1370);
         add(1369);
     }};
+
+    // expected scores
     private static final List<List<Float>> expectedValues;
 
     static  {
@@ -58,23 +63,30 @@ public class TestSltr {
         }};
     }
 
-    public static LearnToRankClient getClient() {
-        return LearnToRankHelper.getLTRClient(HOSTNAME);
-    }
+    @Before
+    public void resetFeatureStoreAndTrainModels() {
+        try (LearnToRankClient client = ClientUtils.getClient()) {
+            if (client.featureStoreExists()) {
+                client.dropFeatureStore();
+            }
+            assertFalse(client.featureStoreExists());
 
-    public List<Judgement> generateTestJudgements(int num) {
-        List<Judgement> judgements = new LinkedList<>();
-        for (int i = 0; i < num; i++) {
-            judgements.add(Judgement.randomJudgement(1, "test comment"));
+            // Init new featurestore
+            client.initFeatureStore();
+            assertTrue(client.featureStoreExists());
+
+            // Train our models
+            int exitCode = IOUtils.run();
+            assertEquals(exitCode, 0);
+
+        } catch (Exception e) {
+            Assert.fail(e.getMessage());
         }
-
-        return judgements;
     }
 
     @Test
-    public void test() {
-        try (LearnToRankClient client = getClient()) {
-
+    public void testSltr() {
+        try (LearnToRankClient client = ClientUtils.getClient()) {
             QueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("_id", "7555", "1370", "1369");
 
             SltrQueryBuilder loggingQueryBuilder = new SltrQueryBuilder("logged_featureset", "movie_features");
@@ -97,7 +109,16 @@ public class TestSltr {
 
                 assertEquals(values, expectedValues.get(i));
             }
+        } catch (Exception e) {
+            Assert.fail(e.getMessage());
+        }
+    }
 
+    @After
+    public void tearDown() {
+        try (LearnToRankClient client = ClientUtils.getClient()) {
+            client.dropFeatureStore();
+            assertFalse(client.featureStoreExists());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }

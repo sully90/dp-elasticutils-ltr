@@ -1,19 +1,12 @@
 package com.github.onsdigital.elasticutils.ml.client.response.features;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
-import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
-import org.apache.http.util.EntityUtils;
-import org.elasticsearch.client.Response;
-
-import java.io.IOException;
 
 /**
  * @author sullid (David Sullivan) on 04/12/2017
  * @project dp-elasticutils-ltr
  */
-public class LearnToRankGetResponse {
+public class LearnToRankGetResponse<T> {
 
     @JsonProperty("_index")
     private String index;
@@ -25,13 +18,7 @@ public class LearnToRankGetResponse {
     private String version;
     private boolean found;
     @JsonProperty("_source")
-    private FeatureSetRequest source;
-
-    public static LearnToRankGetResponse fromResponse(Response response) throws IOException {
-        String json = EntityUtils.toString(response.getEntity());
-        LearnToRankGetResponse getResponse = JsonUtils.MAPPER.readValue(json, LearnToRankGetResponse.class);
-        return getResponse;
-    }
+    private T source;
 
     public String getIndex() {
         return index;
@@ -53,7 +40,7 @@ public class LearnToRankGetResponse {
         return found;
     }
 
-    public FeatureSetRequest getSource() {
+    public T getSource() {
         return source;
     }
 }

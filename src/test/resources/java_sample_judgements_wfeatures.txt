@@ -1,0 +1,3 @@
+0	qid:1	1:9.510193	2:10.7808075 # test comment
+2	qid:1	1:6.8449354	2:10.7808075 # test comment
+4	qid:1	1:12.318446	2:9.8376875 # test comment

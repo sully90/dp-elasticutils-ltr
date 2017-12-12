@@ -1,5 +1,6 @@
 package com.github.onsdigital.elasticutils.ml.client.http;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankGetResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.features.LearnToRankListResponse;
 import com.github.onsdigital.elasticutils.ml.client.response.features.models.Feature;
@@ -13,6 +14,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
 import org.apache.http.nio.entity.NStringEntity;
+import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.Response;
 import org.elasticsearch.client.ResponseException;
 import org.elasticsearch.client.RestClient;
@@ -28,37 +30,82 @@ import java.util.*;
 /**
  * @author sullid (David Sullivan) on 30/11/2017
  * @project dp-elasticutils-ltr
+ *
+ * This class implements APIs for working with Elasticsearch Learn to Rank over Http.
  */
 public class LearnToRankClient implements AutoCloseable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnToRankClient.class);
 
+    private boolean isRegisteredShutdown = false;
     private final RestClient restClient;
-
-    private static final String LTR_INDEX = "_ltr";
 
     public LearnToRankClient(RestClientBuilder restClientBuilder) {
         this.restClient = restClientBuilder.build();
     }
 
+    public LearnToRankClient(RestClientBuilder restClientBuilder, boolean registerShutdown) {
+        this.restClient = restClientBuilder.build();
+        if (registerShutdown) {
+            this.registerShutdownThread();
+        }
+    }
+
+    /**
+     * Expose GET API from org.elasticsearch.client.RestClient
+     * @param apiEndPoint to perform the GET request on
+     * @param params additional parameters for the request
+     * @return org.elasticsearch.client.Response
+     * @throws IOException
+     */
     private Response get(String apiEndPoint, Map<String, String> params) throws IOException {
         return this.restClient.performRequest(HttpMethod.GET.method(), apiEndPoint, params);
     }
 
+    /**
+     * Expose PUT API without content from org.elasticsearch.client.RestClient
+     * @param apiEndPoint to perform the PUT request on
+     * @param params additional parameters for the request
+     * @return org.elasticsearch.client.Response
+     * @throws IOException
+     */
     private Response put(String apiEndPoint, Map<String, String> params) throws IOException {
         return this.restClient.performRequest(HttpMethod.PUT.method(), apiEndPoint, params);
     }
 
+    /**
+     * Expose PUT API with content from org.elasticsearch.client.RestClient
+     * @param apiEndPoint to perform the PUT request on
+     * @param params additional parameters for the request
+     * @param json json string for the request
+     * @return org.elasticsearch.client.Response
+     * @throws IOException
+     */
     private Response put(String apiEndPoint, Map<String, String> params, String json) throws IOException {
         HttpEntity entity = new NStringEntity(json, ContentType.APPLICATION_JSON);
         return this.restClient.performRequest(HttpMethod.PUT.method(), apiEndPoint, params, entity);
     }
 
+    /**
+     * Expose POST API from org.elasticsearch.client.RestClient
+     * @param apiEndPoint to perform the POST request on
+     * @param params additional parameters for the request
+     * @param json json string for the request
+     * @return org.elasticsearch.client.Response
+     * @throws IOException
+     */
     private Response post(String apiEndPoint, Map<String, String> params, String json) throws IOException {
         HttpEntity entity = new NStringEntity(json, ContentType.APPLICATION_JSON);
         return this.restClient.performRequest(HttpMethod.POST.method(), apiEndPoint, params, entity);
     }
 
+    /**
+     * Expose DELETE API from org.elasticsearch.client.RestClient
+     * @param apiEndPoint to perform the DELETE request on
+     * @param params additional parameters for the request
+     * @return org.elasticsearch.client.Response
+     * @throws IOException
+     */
     private Response delete(String apiEndPoint, Map<String, String> params) throws IOException {
         return this.restClient.performRequest(HttpMethod.DELETE.method(), apiEndPoint, params);
     }
@@ -66,12 +113,12 @@ public class LearnToRankClient implements AutoCloseable {
     // FEATURES //
 
     /**
-     *
-     * @return true if featureStore exists, false otherwise
+     * Check whether the feature store has been initialised
+     * @return true if the feature store is initialised, false otherwise
      * @throws IOException
      */
     public boolean featureStoreExists() throws IOException {
-        String api = endpoint(true, EndPoint.FEATURESET);
+        String api = endpoint(EndPoint.LTR, EndPoint.FEATURESET);
         try {
             Response response = this.get(api, Collections.emptyMap());
             return response.getStatusLine().getStatusCode() == HttpStatus.SC_OK;
@@ -86,43 +133,45 @@ public class LearnToRankClient implements AutoCloseable {
     }
 
     /**
-     *
-     * @return Response
+     * Initialises the feature store
+     * @return org.elasticsearch.client.Response
      * @throws IOException
-     *
-     * Initialise the default feature store
      */
     public Response initFeatureStore() throws IOException {
         if (this.featureStoreExists()) {
             LOGGER.debug("Attempt to init FeatureStore which already exists.");
             throw new RuntimeException("FeatureStore already exists");
         }
-        return this.put(LTR_INDEX, Collections.emptyMap());
+        return this.put(EndPoint.LTR.getEndPoint(), Collections.emptyMap());
     }
 
     /**
-     *
-     * @return Response
+     * Drops the feature store
+     * @return org.elasticsearch.client.Response
      * @throws IOException
-     *
-     * Drops the featurestore
      */
     public Response dropFeatureStore() throws IOException {
-        return this.delete(LTR_INDEX, Collections.emptyMap());
+        return this.delete(EndPoint.LTR.getEndPoint(), Collections.emptyMap());
     }
 
-    public LearnToRankListResponse listFeatureSets() throws IOException {
-        String api = endpoint(true, EndPoint.FEATURESET);
+    /**
+     * Lists all FeatureSets contained in the Elasticsearch feature store
+     * @return LearnToRankListResponse which can unmarshall the json response to a FeatureSetRequest object
+     * @throws IOException
+     */
+    public LearnToRankListResponse<FeatureSetRequest> listFeatureSets() throws IOException {
+        String api = endpoint(EndPoint.LTR, EndPoint.FEATURESET);
         Map<String, String> params = Collections.EMPTY_MAP;
 
         Response response = this.get(api, params);
-        return LearnToRankListResponse.fromResponse(response);
+        return LearnToRankListResponse.fromResponse(response, new TypeReference<LearnToRankListResponse<FeatureSetRequest>>(){});
     }
 
     /**
-     *
-     * @param name
-     * @return true is featureSet with this name exists
+     * Checks if a feature set with the given name exists
+     * @param name name of the feature set
+     * @return true if exists, else false
+     * @throws IOException
      */
     public boolean featureSetExists(String name) throws IOException {
         try {
@@ -134,49 +183,74 @@ public class LearnToRankClient implements AutoCloseable {
     }
 
     /**
-     *
+     * Retrieves a FeatureSet from Elasticsearch by its name
      * @param name
-     * @return Response
+     * @return LearnToRankGetResponse to unmarshall the json response
      * @throws IOException
-     *
-     * Gets a featureset by its name
      */
-    public LearnToRankGetResponse getFeatureSet(String name) throws IOException {
-        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), name);
-        return LearnToRankGetResponse.fromResponse(this.get(api, Collections.emptyMap()));
+    public LearnToRankGetResponse<FeatureSetRequest> getFeatureSet(String name) throws IOException {
+        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.FEATURESET.getEndPoint(), name);
+        Response response = this.get(api, Collections.emptyMap());
+
+        String entity = EntityUtils.toString(response.getEntity());
+        return JsonUtils.MAPPER.readValue(entity, new TypeReference<LearnToRankGetResponse<FeatureSetRequest>>(){});
     }
 
-    public Response deleteFeatureSet(String name) throws IOException {
-        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), name);
-        return this.delete(api, Collections.emptyMap());
-    }
-
+    /**
+     * API to create a feature set
+     * @param request
+     * @return org.elasticsearch.client.Response
+     * @throws IOException
+     */
     public Response createFeatureSet(FeatureSetRequest request) throws IOException {
-        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), request.getName());
+        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.FEATURESET.getEndPoint(), request.getName());
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Adding featureset with name {} : {}", request.getName(), api);
         return this.put(api, Collections.emptyMap(), request.toJson());
     }
 
+    /**
+     * API to delete a feature set
+     * @param name
+     * @return org.elasticsearch.client.Response
+     * @throws IOException
+     */
+    public Response deleteFeatureSet(String name) throws IOException {
+        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.FEATURESET.getEndPoint(), name);
+        if (LOGGER.isDebugEnabled()) LOGGER.debug("Deleting featureset with name {} : {}", name, api);
+        return this.delete(api, Collections.emptyMap());
+    }
+
+    /**
+     * API to append feature(s) to an existing feature set
+     * @param name
+     * @param featureList
+     * @return
+     * @throws IOException
+     */
     public Response appendToFeatureSet(String name, LinkedList<Feature> featureList) throws IOException {
-        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(), name, EndPoint.ADD_FEATURES.getEndPoint());
+        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.FEATURESET.getEndPoint(), name, EndPoint.ADD_FEATURES.getEndPoint());
         FeatureSet featureSet = new FeatureSet(null, featureList);
 
+        if (LOGGER.isDebugEnabled()) LOGGER.debug("Appending to featureset with name {} : {}", name, api);
         String json = featureSet.toJson();
         return this.post(api, Collections.emptyMap(), json);
     }
 
     // MODEL CRUD //
 
-    public Response listModels() throws IOException {
-        String api = endpoint(true, EndPoint.MODEL);
+    public LearnToRankListResponse<RankLibModel> listModels() throws IOException {
+        String api = endpoint(EndPoint.LTR, EndPoint.MODEL);
 
-        return this.get(api, Collections.emptyMap());
+        Response response = this.get(api, Collections.emptyMap());
+        return LearnToRankListResponse.fromResponse(response, new TypeReference<LearnToRankListResponse<RankLibModel>>(){});
     }
 
-    public Response getModel(String name) throws IOException {
-        String api = endpoint(true, EndPoint.MODEL.getEndPoint(), name);
+    public LearnToRankGetResponse<RankLibModel> getModel(String name) throws IOException {
+        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.MODEL.getEndPoint(), name);
 
-        return this.get(api, Collections.emptyMap());
+        Response response = this.get(api, Collections.emptyMap());
+        String entity = EntityUtils.toString(response.getEntity());
+        return JsonUtils.MAPPER.readValue(entity, new TypeReference<LearnToRankGetResponse<RankLibModel>>(){});
     }
 
     public Response createModel(String featureSet, RankLibModel model) throws IOException {
@@ -184,33 +258,61 @@ public class LearnToRankClient implements AutoCloseable {
             put("model", model);
         }};
 
-        String api = endpoint(true, EndPoint.FEATURESET.getEndPoint(),
+        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.FEATURESET.getEndPoint(),
                 featureSet, EndPoint.CREATE_MODEL.getEndPoint());
 
         return this.post(api, Collections.emptyMap(), JsonUtils.toJson(request));
     }
 
     public Response deleteModel(String name) throws IOException {
-        String api = endpoint(true, EndPoint.MODEL.getEndPoint(), name);
+        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.MODEL.getEndPoint(), name);
 
         return this.delete(api, Collections.emptyMap());
     }
 
     // SLTR SEARCH //
 
+    /**
+     * Low-level API to perform a search request and log features against a given feature set using a LogQuerySearchRequest
+     * @param index
+     * @param logQuery LogQuerySearchRequest object to provide the json request
+     * @return SltrResponse to unmarshall the json response
+     * @throws IOException
+     */
     public SltrResponse search(String index, LogQuerySearchRequest logQuery) throws IOException {
-        String api = endpoint(false, Operation.SEARCH.getOperation());
+        String api = endpoint(Operation.SEARCH.getOperation());
         String jsonRequest = logQuery.toJson();
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
         return SltrResponse.fromResponse(response);
     }
 
+    /**
+     * Low-level API to perform a search request and log features against a given feature set using a String logQuery
+     * @param index
+     * @param logQuery LogQuerySearchRequest in the form of a json string
+     * @return SltrResponse to unmarshall the json response
+     * @throws IOException
+     */
     public SltrResponse search(String index, String logQuery) throws IOException {
-        String api = endpoint(false, Operation.SEARCH.getOperation());
+        String api = endpoint(Operation.SEARCH.getOperation());
         Response response = this.post(api, Collections.emptyMap(), logQuery);
         return SltrResponse.fromResponse(response);
     }
 
+    /**
+     * Method to register a shutdown hook for this client
+     */
+    public void registerShutdownThread() {
+        if (!this.isRegisteredShutdown) {
+            Runtime.getRuntime().addShutdownHook(new ShutDownClientThread(this));
+            this.isRegisteredShutdown = true;
+        }
+    }
+
+    /**
+     * Implements auto-closable on the RestClient
+     * @throws Exception
+     */
     @Override
     public void close() throws Exception {
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Closing RestClient");
@@ -220,29 +322,39 @@ public class LearnToRankClient implements AutoCloseable {
 
     // UTIL //
 
-    static String endpoint(boolean featureCrud, String[] indices, String[] types, String endpoint) {
-        return endpoint(featureCrud, String.join(",", indices), String.join(",", types), endpoint);
+    /**
+     * Utility function to construct API endpoints as Strings
+     * @param indices
+     * @param types
+     * @param endpoint
+     * @return
+     */
+    static String endpoint(String[] indices, String[] types, String endpoint) {
+        return endpoint(String.join(",", indices), String.join(",", types), endpoint);
     }
 
-    static String endpoint(boolean featureCrud, EndPoint... learnToRankEndPoints) {
+    /**
+     * Utility function to construct API endpoints as Strings
+     * @param learnToRankEndPoints
+     * @return
+     */
+    static String endpoint(EndPoint... learnToRankEndPoints) {
         String[] endPoints = new String[learnToRankEndPoints.length];
 
         for (int i = 0; i < learnToRankEndPoints.length; i++) {
             endPoints[i] = learnToRankEndPoints[i].getEndPoint();
         }
 
-        return endpoint(featureCrud, endPoints);
+        return endpoint(endPoints);
     }
 
     /**
-     * Utility method to build request's endpoint.
+     * Utility function to construct API endpoints as Strings
+     * @param parts
+     * @return
      */
-    static String endpoint(boolean featureCrud, String... parts) {
+    static String endpoint(String... parts) {
         StringJoiner joiner = new StringJoiner("/", "/", "");
-        if (featureCrud) {
-            // Add the base LTR index
-            joiner.add(LTR_INDEX);
-        }
         for (String part : parts) {
             if (Strings.hasLength(part)) {
                 joiner.add(part);
@@ -251,13 +363,17 @@ public class LearnToRankClient implements AutoCloseable {
         return joiner.toString();
     }
 
+    /**
+     * Enum containing frequently used LTR endpoints
+     */
     enum EndPoint {
+        LTR("_ltr"),
         FEATURESET("_featureset"),
         ADD_FEATURES("_addfeatures"),
         CREATE_MODEL("_createmodel"),
         MODEL("_model");
 
-        private String endPoint;
+        String endPoint;
 
         EndPoint(String endPoint) {
             this.endPoint = endPoint;
@@ -268,6 +384,9 @@ public class LearnToRankClient implements AutoCloseable {
         }
     }
 
+    /**
+     * Enum to provide a clean way to access various operations
+     */
     enum Operation {
         SEARCH("_search");
 
@@ -282,6 +401,9 @@ public class LearnToRankClient implements AutoCloseable {
         }
     }
 
+    /**
+     * Thread which allows the user to register a client shutdown
+     */
     public static class ShutDownClientThread extends Thread {
 
         private static final Logger LOGGER = LoggerFactory.getLogger(ShutDownClientThread.class);
