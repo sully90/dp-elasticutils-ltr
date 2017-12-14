@@ -7,12 +7,13 @@ import java.util.List;
  * @author sullid (David Sullivan) on 14/12/2017
  * @project dp-elasticutils-ltr
  *
- * Computes metrics to determine search performance
+ * Computes metrics to determine search performance.
+ * See https://github.com/ONSdigital/dp-search/blob/master/search_relevance/README.md
+ * for a description of each metric calculated below.
  */
 public class Judgements {
 
     private static final float MAX_SCORE = 4.0f;
-    private static final float MIN_SCORE = 0.0f;
 
     private int queryId;
     private List<Judgement> judgementList;
