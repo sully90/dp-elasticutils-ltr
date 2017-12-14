@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Judgements {
 
-    private static final float MAX_SCORE = 4.0f;
+    public static final float MAX_SCORE = 4.0f;
 
     private int queryId;
     private List<Judgement> judgementList;
@@ -64,7 +64,9 @@ public class Judgements {
         float[] idealDiscountedCumulativeGain = idealDiscountedCumulativeGain(normalisedDiscountedCumulativeGain.length);
 
         for (int i = 0; i < normalisedDiscountedCumulativeGain.length; i++) {
-            normalisedDiscountedCumulativeGain[i] = discountedCumulativeGain[i] / idealDiscountedCumulativeGain[i];
+            // Cap the value at 1
+            normalisedDiscountedCumulativeGain[i] = Math.min(1.0f,
+                    discountedCumulativeGain[i] / idealDiscountedCumulativeGain[i]);
         }
 
         return normalisedDiscountedCumulativeGain;

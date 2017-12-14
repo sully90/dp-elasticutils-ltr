@@ -36,6 +36,10 @@ public class TestNDCG {
         Judgements judgements = new Judgements(QUERY_ID, judgementList);
 
         float[] ndcg = judgements.normalisedDiscountedCumulativeGain();
+
+        System.out.println(Arrays.toString(ndcg));
+        System.out.println(Arrays.toString(expected));
+
         assertTrue(Arrays.equals(ndcg, expected));
     }
 

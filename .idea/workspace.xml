@@ -4,6 +4,7 @@
     <list default="true" id="6bfd6f53-8793-492f-8c87-f9d7fd1ea245" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java" afterPath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,6 +19,16 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="TestFeatureStore.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-233">
+                  <caret line="39" column="40" lean-forward="false" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="Judgement.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java">
               <provider selected="true" editor-type-id="text-editor">
@@ -38,8 +49,8 @@
           <file leaf-file-name="Judgements.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1155">
-                  <caret line="77" column="36" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="36" />
+                <state relative-caret-position="275">
+                  <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -50,8 +61,8 @@
           <file leaf-file-name="TestNDCG.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="495">
-                  <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+                <state relative-caret-position="547">
+                  <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -66,8 +77,8 @@
           <file leaf-file-name="TestNDCG.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="547">
-                  <caret line="37" column="24" lean-forward="false" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+                <state relative-caret-position="577">
+                  <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -159,8 +170,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/utils/IOUtils.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java" />
       </list>
@@ -565,21 +576,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestNDCG - 2017.12.14 at 09h 05m 35s.xml">
-      <configuration name="TestNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 02m 56s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 04m 03s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 04m 52s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 05m 05s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 07m 04s.xml">
       <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
     </history-entry>
@@ -595,6 +591,21 @@
     <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 10m 09s.xml">
       <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 48m 18s.xml">
+      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 48m 37s.xml">
+      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 49m 48s.xml">
+      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 50m 22s.xml">
+      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 51m 29s.xml">
+      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1057" width="1920" height="1057" extended-state="6" />
@@ -608,7 +619,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24467005" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24467005" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -904,23 +915,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="71" column="53" lean-forward="false" selection-start-line="71" selection-start-column="53" selection-end-line="71" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="58" column="15" lean-forward="false" selection-start-line="58" selection-start-column="15" selection-end-line="58" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="-233">
+          <caret line="39" column="40" lean-forward="false" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -939,20 +938,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+        <state relative-caret-position="15">
+          <caret line="71" column="53" lean-forward="false" selection-start-line="71" selection-start-column="53" selection-end-line="71" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="36" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="36" />
+        <state relative-caret-position="577">
+          <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
