@@ -8,24 +8,26 @@ import java.util.Random;
  */
 public class Judgement {
 
-    private int judgement;
+    private float judgement;
     private int queryId;
+    private int rank;
     private String comment;
 
-    public Judgement(int judgement, int queryId) {
+    public Judgement(float judgement, int queryId, int rank) {
         if (judgement < 0 || judgement > 4) {
             throw new UnsupportedOperationException("Judgement must be between 0 and 4");
         }
         this.judgement = judgement;
         this.queryId = queryId;
+        this.rank = rank;
     }
 
-    public Judgement(int judgement, int queryId, String comment) {
-        this(judgement, queryId);
+    public Judgement(float judgement, int queryId, int rank, String comment) {
+        this(judgement, queryId, rank);
         this.comment = comment;
     }
 
-    public int getJudgement() {
+    public float getJudgement() {
         return judgement;
     }
 
@@ -33,23 +35,31 @@ public class Judgement {
         return queryId;
     }
 
+    public int getRank() {
+        return rank;
+    }
+
     public String getComment() {
         return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getFormattedComment() {
         return String.format("# %s", this.comment);
     }
 
-    public static Judgement randomJudgement(int queryId) {
-        return randomJudgement(queryId, null);
+    public static Judgement randomJudgement(int queryId, int rank) {
+        return randomJudgement(queryId, rank, null);
     }
 
-    public static Judgement randomJudgement(int queryId, String comment) {
+    public static Judgement randomJudgement(int queryId, int rank, String comment) {
         Random random = new Random();
         int max = 4;
         int min = 0;
         int judgement = random.nextInt((max - min) + 1) + min;
-        return new Judgement(judgement, queryId, comment);
+        return new Judgement(judgement, queryId, rank, comment);
     }
 }
