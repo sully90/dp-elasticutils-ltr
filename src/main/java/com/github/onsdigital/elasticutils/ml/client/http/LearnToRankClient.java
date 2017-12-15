@@ -327,7 +327,7 @@ public class LearnToRankClient implements AutoCloseable {
      * @throws IOException
      */
     public SltrResponse search(String index, LogQuerySearchRequest logQuery) throws IOException {
-        String api = endpoint(Operation.SEARCH.getOperation());
+        String api = endpoint(index, Operation.SEARCH.getOperation());
         String jsonRequest = logQuery.toJson();
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
         return SltrResponse.fromResponse(response);
@@ -341,7 +341,7 @@ public class LearnToRankClient implements AutoCloseable {
      * @throws IOException
      */
     public SltrResponse search(String index, String logQuery) throws IOException {
-        String api = endpoint(Operation.SEARCH.getOperation());
+        String api = endpoint(index, Operation.SEARCH.getOperation());
         Response response = this.post(api, Collections.emptyMap(), logQuery);
         return SltrResponse.fromResponse(response);
     }

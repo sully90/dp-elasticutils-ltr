@@ -29,7 +29,7 @@ def loadFeatures(esHost, featureSetName='movie_features'):
             "features": [feature for feature in eachFeature()]
         }
     }
-    path = "_ltr/_featureset/%s" % featureSetName
+    path = "_ltr/test_featurestore/_featureset/%s" % featureSetName
     fullPath = urljoin(esHost, path)
     print("POST %s" % fullPath)
     print(json.dumps(featureSet, indent=2))

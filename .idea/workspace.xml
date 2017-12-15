@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bfd6f53-8793-492f-8c87-f9d7fd1ea245" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/query/SltrQueryBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/query/SltrQueryBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java" afterPath="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/loadFeatures.py" afterPath="$PROJECT_DIR$/src/test/resources/loadFeatures.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/train.py" afterPath="$PROJECT_DIR$/src/test/resources/train.py" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,139 +18,81 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.43964335">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TestFeatureStore.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="826">
-                  <caret line="77" column="14" lean-forward="false" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
-                  <folding>
-                    <element signature="e#1484#1493#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestSltrQuery.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="33" column="64" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="64" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Judgement.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-                  <folding>
-                    <element signature="e#930#931#0" expanded="true" />
-                    <element signature="e#957#958#0" expanded="true" />
-                    <element signature="e#1067#1068#0" expanded="true" />
-                    <element signature="e#1105#1106#0" expanded="true" />
-                    <element signature="e#1276#1277#0" expanded="true" />
-                    <element signature="e#1335#1336#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Judgements.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="334">
-                  <caret line="81" column="30" lean-forward="false" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestNDCG.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TestNDCG.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="585">
-                  <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1381">
-                  <caret line="228" column="75" lean-forward="false" selection-start-line="228" selection-start-column="75" selection-end-line="228" selection-end-column="75" />
-                  <folding>
-                    <element signature="e#17179#17180#0" expanded="true" />
-                    <element signature="e#17229#17230#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LogQuerySearchRequest.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="307">
-                  <caret line="112" column="44" lean-forward="true" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SltrQueryBuilder.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/query/SltrQueryBuilder.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-537">
-                  <caret line="39" column="24" lean-forward="false" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#1912#1913#0" expanded="true" />
-                    <element signature="e#1940#1941#0" expanded="true" />
-                    <element signature="e#1982#1983#0" expanded="true" />
-                    <element signature="e#2016#2017#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LogSpecs.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="TestFeatureStore.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="77" column="14" lean-forward="false" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
+              <folding>
+                <element signature="e#1484#1493#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestSltrQuery.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogQuerySearchRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="127" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Judgement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+              <folding>
+                <element signature="e#930#931#0" expanded="true" />
+                <element signature="e#957#958#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+                <element signature="e#1105#1106#0" expanded="true" />
+                <element signature="e#1276#1277#0" expanded="true" />
+                <element signature="e#1335#1336#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Judgements.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="81" column="30" lean-forward="false" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestNDCG.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -229,11 +173,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/query/SltrQueryBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java" />
       </list>
     </option>
   </component>
@@ -416,7 +360,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LogQuerySearchRequest">
+  <component name="RunManager" selected="JUnit.TestSltrQuery.testSltr">
     <configuration name="LogQuerySearchRequest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -486,7 +430,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="TestNDCG" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSltrQuery.resetFeatureStoreAndTrainModels" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.github.onsdigital.elasticutils.ml.*" />
@@ -497,9 +441,9 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.github.onsdigital.elasticutils.ml" />
-      <option name="MAIN_CLASS_NAME" value="com.github.onsdigital.elasticutils.ml.TestNDCG" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.github.onsdigital.elasticutils.ml.TestSltrQuery" />
+      <option name="METHOD_NAME" value="resetFeatureStoreAndTrainModels" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -511,7 +455,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="TestNDCG.testNDCG" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSltrQuery.testSltr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.github.onsdigital.elasticutils.ml.*" />
@@ -522,8 +466,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.github.onsdigital.elasticutils.ml" />
-      <option name="MAIN_CLASS_NAME" value="com.github.onsdigital.elasticutils.ml.TestNDCG" />
-      <option name="METHOD_NAME" value="testNDCG" />
+      <option name="MAIN_CLASS_NAME" value="com.github.onsdigital.elasticutils.ml.TestSltrQuery" />
+      <option name="METHOD_NAME" value="testSltr" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -617,19 +561,19 @@
       <listeners />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.TestNDCG.testNDCG" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestNDCG" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.testLtrClient" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.tearDown" />
-      <item index="4" class="java.lang.String" itemvalue="Application.LogQuerySearchRequest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.testLtrClient" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.tearDown" />
+      <item index="2" class="java.lang.String" itemvalue="Application.LogQuerySearchRequest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.testSltr" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.resetFeatureStoreAndTrainModels" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.LogQuerySearchRequest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.tearDown" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.testLtrClient" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestNDCG.testNDCG" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestNDCG" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.testSltr" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.resetFeatureStoreAndTrainModels" />
+        <item index="2" class="java.lang.String" itemvalue="Application.LogQuerySearchRequest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.tearDown" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestFeatureStore.testLtrClient" />
       </list>
     </recent_temporary>
   </component>
@@ -658,29 +602,29 @@
     <history-entry file="TestFeatureStore_testLtrClient - 2017.12.15 at 10h 37m 01s.xml">
       <configuration name="TestFeatureStore.testLtrClient" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 08m 46s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 09m 15s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 10m 09s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 48m 18s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 48m 37s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 49m 48s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 50m 22s.xml">
-      <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestNDCG_testNDCG - 2017.12.14 at 09h 51m 29s.xml">
       <configuration name="TestNDCG.testNDCG" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltrQuery_resetFeatureStoreAndTrainModels - 2017.12.15 at 11h 44m 16s.xml">
+      <configuration name="TestSltrQuery.resetFeatureStoreAndTrainModels" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltrQuery_resetFeatureStoreAndTrainModels - 2017.12.15 at 11h 45m 57s.xml">
+      <configuration name="TestSltrQuery.resetFeatureStoreAndTrainModels" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltrQuery_resetFeatureStoreAndTrainModels - 2017.12.15 at 11h 47m 07s.xml">
+      <configuration name="TestSltrQuery.resetFeatureStoreAndTrainModels" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltrQuery_testSltr - 2017.12.15 at 11h 41m 18s.xml">
+      <configuration name="TestSltrQuery.testSltr" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltrQuery_testSltr - 2017.12.15 at 11h 41m 38s.xml">
+      <configuration name="TestSltrQuery.testSltr" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltrQuery_testSltr - 2017.12.15 at 11h 42m 17s.xml">
+      <configuration name="TestSltrQuery.testSltr" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestSltrQuery_testSltr - 2017.12.15 at 11h 48m 07s.xml">
+      <configuration name="TestSltrQuery.testSltr" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -965,16 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
@@ -985,29 +919,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="826">
-          <caret line="77" column="14" lean-forward="false" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
+        <state relative-caret-position="438">
+          <caret line="341" column="7" lean-forward="true" selection-start-line="341" selection-start-column="7" selection-end-line="341" selection-end-column="7" />
           <folding>
-            <element signature="e#1484#1493#0" expanded="true" />
+            <element signature="e#17193#17194#0" expanded="true" />
+            <element signature="e#17243#17244#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="33" column="64" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,22 +943,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/models/LogSpecs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="112" column="44" lean-forward="true" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
+        <state relative-caret-position="480">
+          <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestNDCG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1381">
-          <caret line="228" column="75" lean-forward="false" selection-start-line="228" selection-start-column="75" selection-end-line="228" selection-end-column="75" />
+        <state relative-caret-position="450">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#17179#17180#0" expanded="true" />
-            <element signature="e#17229#17230#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestFeatureStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="77" column="14" lean-forward="false" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
+          <folding>
+            <element signature="e#1484#1493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/LogQuerySearchRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="127" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestSltrQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

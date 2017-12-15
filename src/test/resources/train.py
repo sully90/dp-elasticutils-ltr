@@ -31,7 +31,7 @@ def saveModel(esHost, scriptName, featureSet, modelFname):
 
     with open(modelFname) as modelFile:
         modelContent = modelFile.read()
-        path = "_ltr/_featureset/%s/_createmodel" % featureSet
+        path = "_ltr/test_featurestore/_featureset/%s/_createmodel" % featureSet
         fullPath = urljoin(esHost, path)
         modelPayload['model']['model']['definition'] = modelContent
         print("POST %s" % fullPath)

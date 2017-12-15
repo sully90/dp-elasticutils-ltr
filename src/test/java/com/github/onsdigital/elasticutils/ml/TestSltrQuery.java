@@ -15,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -91,9 +92,16 @@ public class TestSltrQuery {
             QueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("_id", "7555", "1370", "1369");
 
             SltrQueryBuilder loggingQueryBuilder = new SltrQueryBuilder("logged_featureset", "movie_features");
+            loggingQueryBuilder.setStore(FEATURESTORE_NAME);
             loggingQueryBuilder.setParam("keywords", "rambo");
 
             LogQuerySearchRequest searchRequest = LogQuerySearchRequest.getRequestForQuery(termsQueryBuilder, loggingQueryBuilder);
+
+            try {
+                System.out.println(searchRequest.toJson());
+            } catch (IOException e) {
+                Assert.fail(e.getMessage());
+            }
 
             SltrResponse response = client.search(INDEX, searchRequest);
             List<TmdbMovie> movies = response.getHits().asClass(TmdbMovie.class);
