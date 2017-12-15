@@ -108,7 +108,9 @@ public class LogQuerySearchRequest implements JsonSerializable {
     public static void main(String[] args) {
         TermsQueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("_id", "7555", "1370", "1369");
 
+        String store = "test_featurestore";
         SltrQueryBuilder loggingQueryBuilder = new SltrQueryBuilder("logged_featureset", "movie_features");
+        loggingQueryBuilder.setStore(store);
         loggingQueryBuilder.setParam("keywords", "rambo");
 
         LogSpecs logSpecs = new LogSpecs("log_entry", "logged_featureset");

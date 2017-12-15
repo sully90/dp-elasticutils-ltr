@@ -19,7 +19,10 @@ import java.util.Objects;
 public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
     public static final String NAME = "sltr";
 
+    private static final String DEFAULT_STORE = "";
+
     private static final ParseField NAME_FIELD = new ParseField("_name");
+    private static final ParseField STORE_FIELD = new ParseField("store");
     private static final ParseField FEATURESET_FIELD = new ParseField("featureset");
     private static final ParseField PARAM_FIELD = new ParseField("params");
 
@@ -27,12 +30,19 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
     private final String featureset;
     private final Map<String, String> params;
 
+    private String store;
+
     public SltrQueryBuilder(String name, String featureset) {
-        this(name, featureset, new LinkedHashMap<>());
+        this(name, DEFAULT_STORE, featureset, new LinkedHashMap<>());
     }
 
-    public SltrQueryBuilder(String name, String featureset, Map<String, String> params) {
+    public SltrQueryBuilder(String name, String store, String featureset) {
+        this(name, store, featureset, new LinkedHashMap<>());
+    }
+
+    public SltrQueryBuilder(String name, String store, String featureset, Map<String, String> params) {
         this.name = name;
+        this.store = store;
         this.featureset = featureset;
         this.params = params;
     }
@@ -45,9 +55,20 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
         this.params.put(key, value);
     }
 
+    public String getStore() {
+        return store;
+    }
+
+    public void setStore(String store) {
+        this.store = store;
+    }
+
     @Override
     protected void doWriteTo(StreamOutput streamOutput) throws IOException {
         streamOutput.writeString(this.name);
+        if (null != this.store && !this.store.isEmpty()) {
+            streamOutput.writeString(this.store);
+        }
         streamOutput.writeString(this.featureset);
         streamOutput.writeGenericValue(this.params);
     }
@@ -56,6 +77,9 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
     protected void doXContent(XContentBuilder xContentBuilder, Params params) throws IOException {
         xContentBuilder.startObject(NAME);
         xContentBuilder.field(NAME_FIELD.getPreferredName(), this.name);
+        if (null != this.store && !this.store.isEmpty()) {
+            xContentBuilder.field(STORE_FIELD.getPreferredName(), this.store);
+        }
         xContentBuilder.field(FEATURESET_FIELD.getPreferredName(), this.featureset);
         xContentBuilder.field(PARAM_FIELD.getPreferredName(), this.params);
         xContentBuilder.endObject();
@@ -68,13 +92,20 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
 
     @Override
     protected boolean doEquals(SltrQueryBuilder loggingQueryBuilder) {
-        return Objects.equals(this.name, loggingQueryBuilder.name) &&
+        boolean equals = Objects.equals(this.name, loggingQueryBuilder.name) &&
                 Objects.equals(this.featureset, loggingQueryBuilder.featureset) &&
                 Objects.equals(this.params, loggingQueryBuilder.params);
+        if (null != this.store && !this.store.isEmpty()) {
+            return equals && this.store.equals(loggingQueryBuilder.getStore());
+        }
+        return equals;
     }
 
     @Override
     protected int doHashCode() {
+        if (null != this.store && !this.store.isEmpty()) {
+            return Objects.hash(this.name, this.store, this.featureset, this.params);
+        }
         return Objects.hash(this.name, this.featureset, this.params);
     }
 

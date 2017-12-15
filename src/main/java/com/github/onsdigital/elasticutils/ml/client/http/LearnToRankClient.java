@@ -225,6 +225,9 @@ public class LearnToRankClient implements AutoCloseable {
      * @throws IOException
      */
     public Response createFeatureSet(String featureStore, FeatureSetRequest request) throws IOException {
+        if (!this.featureStoreExists(featureStore)) {
+            throw new IOException("Unknown featureStore: " + featureStore);
+        }
         String api = endpoint(EndPoint.LTR.getEndPoint(),
                 featureStore, EndPoint.FEATURESET.getEndPoint(), request.getName());
         if (LOGGER.isDebugEnabled()) LOGGER.debug("Adding featureset with name {} : {}", request.getName(), api);
