@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 public class TestFeatureStore {
 
     private static String FEATURESET_NAME = "java-test-feature-set";
+    private static String FEATURESTORE_NAME = "test_featurestore";
     private static final String NAME = "match_query";
     private static final String FIELD = "title";
 
@@ -50,13 +51,13 @@ public class TestFeatureStore {
     @Before
     public void resetFeatureStore() {
         try (LearnToRankClient client = ClientUtils.getClient()) {
-            if (client.featureStoreExists()) {
-                client.dropFeatureStore();
+            if (client.featureStoreExists(FEATURESTORE_NAME)) {
+                client.dropFeatureStore(FEATURESTORE_NAME);
             }
-            assertFalse(client.featureStoreExists());
+            assertFalse(client.featureStoreExists(FEATURESTORE_NAME));
 
-            client.initFeatureStore();
-            assertTrue(client.featureStoreExists());
+            client.initFeatureStore(FEATURESTORE_NAME);
+            assertTrue(client.featureStoreExists(FEATURESTORE_NAME));
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
@@ -68,9 +69,9 @@ public class TestFeatureStore {
             // Create and store a test featureset
             FeatureSetRequest request = getFeatureSetRequest();
 
-            client.createFeatureSet(request);
+            client.createFeatureSet(FEATURESTORE_NAME, request);
 
-            LearnToRankListResponse<FeatureSetRequest> listResponse = client.listFeatureSets();
+            LearnToRankListResponse<FeatureSetRequest> listResponse = client.listFeatureSets(FEATURESTORE_NAME);
             assertEquals(listResponse.getHits().getTotal(), 1);
             assertEquals(listResponse.getHits().getHits().size(), 1);
 
@@ -85,8 +86,8 @@ public class TestFeatureStore {
     @After
     public void tearDown() {
         try (LearnToRankClient client = ClientUtils.getClient()) {
-            client.dropFeatureStore();
-            assertFalse(client.featureStoreExists());
+            client.dropFeatureStore(FEATURESTORE_NAME);
+            assertFalse(client.featureStoreExists(FEATURESTORE_NAME));
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }

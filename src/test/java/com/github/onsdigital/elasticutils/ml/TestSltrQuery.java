@@ -31,6 +31,7 @@ public class TestSltrQuery {
 
     // Index to test against
     private static final String INDEX = "tmdb";
+    private static String FEATURESTORE_NAME = "test_featurestore";
 
     // ids to use for training
     private static final List<Integer> ids = new ArrayList<Integer>() {{
@@ -66,14 +67,14 @@ public class TestSltrQuery {
     @Before
     public void resetFeatureStoreAndTrainModels() {
         try (LearnToRankClient client = ClientUtils.getClient()) {
-            if (client.featureStoreExists()) {
-                client.dropFeatureStore();
+            if (client.featureStoreExists(FEATURESTORE_NAME)) {
+                client.dropFeatureStore(FEATURESTORE_NAME);
             }
-            assertFalse(client.featureStoreExists());
+            assertFalse(client.featureStoreExists(FEATURESTORE_NAME));
 
             // Init new featurestore
-            client.initFeatureStore();
-            assertTrue(client.featureStoreExists());
+            client.initFeatureStore(FEATURESTORE_NAME);
+            assertTrue(client.featureStoreExists(FEATURESTORE_NAME));
 
             // Train our models
             int exitCode = IOUtils.run();
@@ -117,8 +118,8 @@ public class TestSltrQuery {
     @After
     public void tearDown() {
         try (LearnToRankClient client = ClientUtils.getClient()) {
-            client.dropFeatureStore();
-            assertFalse(client.featureStoreExists());
+            client.dropFeatureStore(FEATURESTORE_NAME);
+            assertFalse(client.featureStoreExists(FEATURESTORE_NAME));
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
