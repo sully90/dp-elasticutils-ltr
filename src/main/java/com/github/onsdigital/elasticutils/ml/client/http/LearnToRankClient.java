@@ -285,34 +285,34 @@ public class LearnToRankClient implements AutoCloseable {
         return this.post(api, Collections.emptyMap());
     }
 
-    public LearnToRankListResponse<RankLibModel> listModels() throws IOException {
+    public LearnToRankListResponse<RankLibModel> listModels(String featureStore) throws IOException {
         String api = endpoint(EndPoint.LTR, EndPoint.MODEL);
 
         Response response = this.get(api, Collections.emptyMap());
         return LearnToRankListResponse.fromResponse(response, new TypeReference<LearnToRankListResponse<RankLibModel>>(){});
     }
 
-    public LearnToRankGetResponse<RankLibModel> getModel(String name) throws IOException {
-        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.MODEL.getEndPoint(), name);
+    public LearnToRankGetResponse<RankLibModel> getModel(String featureStore, String name) throws IOException {
+        String api = endpoint(EndPoint.LTR.getEndPoint(), featureStore, EndPoint.MODEL.getEndPoint(), name);
 
         Response response = this.get(api, Collections.emptyMap());
         String entity = EntityUtils.toString(response.getEntity());
         return JsonUtils.MAPPER.readValue(entity, new TypeReference<LearnToRankGetResponse<RankLibModel>>(){});
     }
 
-    public Response createModel(String featureSet, RankLibModel model) throws IOException {
+    public Response createModel(String featureStore, String featureSet, RankLibModel model) throws IOException {
         final Map<String, RankLibModel> request = new HashMap<String, RankLibModel>() {{
             put("model", model);
         }};
 
-        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.FEATURESET.getEndPoint(),
+        String api = endpoint(EndPoint.LTR.getEndPoint(), featureStore, EndPoint.FEATURESET.getEndPoint(),
                 featureSet, EndPoint.CREATE_MODEL.getEndPoint());
 
         return this.post(api, Collections.emptyMap(), JsonUtils.toJson(request));
     }
 
-    public Response deleteModel(String name) throws IOException {
-        String api = endpoint(EndPoint.LTR.getEndPoint(), EndPoint.MODEL.getEndPoint(), name);
+    public Response deleteModel(String featureStore, String name) throws IOException {
+        String api = endpoint(EndPoint.LTR.getEndPoint(), featureStore, EndPoint.MODEL.getEndPoint(), name);
 
         return this.delete(api, Collections.emptyMap());
     }
@@ -320,7 +320,7 @@ public class LearnToRankClient implements AutoCloseable {
     // SLTR SEARCH //
 
     /**
-     * Low-level API to perform a search request and log features against a given feature set using a LogQuerySearchRequest
+     * API to perform a search request and log features against a given feature set using a LogQuerySearchRequest
      * @param index
      * @param logQuery LogQuerySearchRequest object to provide the json request
      * @return SltrResponse to unmarshall the json response
@@ -330,19 +330,6 @@ public class LearnToRankClient implements AutoCloseable {
         String api = endpoint(index, Operation.SEARCH.getOperation());
         String jsonRequest = logQuery.toJson();
         Response response = this.post(api, Collections.emptyMap(), jsonRequest);
-        return SltrResponse.fromResponse(response);
-    }
-
-    /**
-     * Low-level API to perform a search request and log features against a given feature set using a String logQuery
-     * @param index
-     * @param logQuery LogQuerySearchRequest in the form of a json string
-     * @return SltrResponse to unmarshall the json response
-     * @throws IOException
-     */
-    public SltrResponse search(String index, String logQuery) throws IOException {
-        String api = endpoint(index, Operation.SEARCH.getOperation());
-        Response response = this.post(api, Collections.emptyMap(), logQuery);
         return SltrResponse.fromResponse(response);
     }
 

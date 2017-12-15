@@ -40,7 +40,7 @@ def loadFeatures(esHost, featureSetName='movie_features'):
 
 
 def initDefaultStore(esHost):
-    path = urljoin(esHost, '_ltr')
+    path = urljoin(esHost, '_ltr/test_featurestore/')
     print("DELETE %s" % path)
     resp = requests.delete(path)
     print("%s" % resp.status_code)
