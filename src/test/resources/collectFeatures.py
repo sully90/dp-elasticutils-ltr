@@ -14,6 +14,7 @@ logQuery = {
             "should": [
                 {"sltr": {
                     "_name": "logged_featureset",
+                    "store": "test_featurestore",
                     "featureset": "movie_features",
                     "params": {
                         "keywords": "rambo"
