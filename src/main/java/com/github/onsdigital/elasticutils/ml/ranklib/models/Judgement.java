@@ -6,7 +6,7 @@ import java.util.Random;
  * @author sullid (David Sullivan) on 06/12/2017
  * @project dp-elasticutils-ltr
  */
-public class Judgement {
+public class Judgement implements Comparable<Judgement> {
 
     private float judgement;
     private int queryId;
@@ -61,5 +61,11 @@ public class Judgement {
         int min = 0;
         int judgement = random.nextInt((max - min) + 1) + min;
         return new Judgement(judgement, queryId, rank, comment);
+    }
+
+    @Override
+    public int compareTo(Judgement compareJudgement) {
+        // Sort by rank
+        return this.rank - compareJudgement.getRank();
     }
 }

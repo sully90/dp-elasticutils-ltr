@@ -1,6 +1,7 @@
 package com.github.onsdigital.elasticutils.ml.ranklib.models;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,7 +28,17 @@ public class Judgements {
                 throw new RuntimeException(String.format("Invalid judgement for queryID: %d : %s", this.queryId, judgement));
             }
         }
+        // Sort by rank
+        Collections.sort(judgements);
         this.judgementList = judgements;
+    }
+
+    public int getQueryId() {
+        return queryId;
+    }
+
+    public List<Judgement> getJudgementList() {
+        return judgementList;
     }
 
     public float[] cumulativeGain() {
