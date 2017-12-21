@@ -33,6 +33,10 @@ public class Judgements {
         this.judgementList = judgements;
     }
 
+    private Judgements() {
+        // For Jackson
+    }
+
     public int getQueryId() {
         return queryId;
     }

@@ -1,5 +1,7 @@
 package com.github.onsdigital.elasticutils.ml.ranklib.models;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -12,6 +14,7 @@ public class Judgement implements Comparable<Judgement> {
     private int queryId;
     private int rank;
     private String comment;
+    private Map<String, Object> attrs;
 
     public Judgement(float judgement, int queryId, int rank) {
         if (judgement < 0 || judgement > 4) {
@@ -20,11 +23,16 @@ public class Judgement implements Comparable<Judgement> {
         this.judgement = judgement;
         this.queryId = queryId;
         this.rank = rank;
+        this.attrs = new HashMap<>();
     }
 
     public Judgement(float judgement, int queryId, int rank, String comment) {
         this(judgement, queryId, rank);
         this.comment = comment;
+    }
+
+    private Judgement() {
+        // For Jackson
     }
 
     public float getJudgement() {
@@ -49,6 +57,14 @@ public class Judgement implements Comparable<Judgement> {
 
     public String getFormattedComment() {
         return String.format("# %s", this.comment);
+    }
+
+    public void addAttr(String key, Object value) {
+        this.attrs.put(key, value);
+    }
+
+    public Object getAttr(String key) {
+        return this.attrs.get(key);
     }
 
     public static Judgement randomJudgement(int queryId, int rank) {
