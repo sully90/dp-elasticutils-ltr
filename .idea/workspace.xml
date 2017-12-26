@@ -4,7 +4,6 @@
     <list default="true" id="6bfd6f53-8793-492f-8c87-f9d7fd1ea245" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Runner.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Runner.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,22 +26,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="288" column="100" lean-forward="false" selection-start-line="288" selection-start-column="100" selection-end-line="288" selection-end-column="100" />
+            <state relative-caret-position="315">
+              <caret line="297" column="17" lean-forward="false" selection-start-line="297" selection-start-column="17" selection-end-line="297" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RankLibModel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RankLibModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="37" column="58" lean-forward="false" selection-start-line="37" selection-start-column="58" selection-end-line="37" selection-end-column="58" />
-              <folding />
+            <state relative-caret-position="795">
+              <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+              <folding>
+                <marker date="1514284889000" expanded="false" signature="560:571" ph=" { " />
+                <marker date="1514284889000" expanded="false" signature="583:589" ph=" }" />
+                <marker date="1514284889000" expanded="false" signature="618:629" ph=" { " />
+                <marker date="1514284889000" expanded="false" signature="642:648" ph=" }" />
+                <marker date="1514284889000" expanded="false" signature="1397:1412" ph=" { " />
+                <marker date="1514284889000" expanded="false" signature="1424:1434" ph=" }" />
+                <marker date="1514284889000" expanded="false" signature="1473:1488" ph=" { " />
+                <marker date="1514284889000" expanded="false" signature="1506:1516" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,7 +151,6 @@
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/old/TestSltr.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/utils/ClientUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/features/LearnToRankListResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/old/TestModels.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/TestClient.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/onsdigital/elasticutils/ml/utils/IOUtils.java" />
@@ -158,6 +165,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Runner.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java" />
       </list>
     </option>
   </component>
@@ -261,7 +269,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestNDCG.testNDCG">
+  <component name="RunManager" selected="Application.RankLibModel">
     <configuration name="Judgements" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -281,14 +289,14 @@
       <module name="dp-elasticutils-ltr" />
       <envs />
     </configuration>
-    <configuration name="LogQuerySearchRequest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="RankLibModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.github.onsdigital.elasticutils.ml.requests.*" />
+          <option name="PATTERN" value="com.github.onsdigital.elasticutils.ml.ranklib.models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest" />
+      <option name="MAIN_CLASS_NAME" value="com.github.onsdigital.elasticutils.ml.ranklib.models.RankLibModel" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -456,19 +464,19 @@
       <listeners />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.LogQuerySearchRequest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.testSltr" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.resetFeatureStoreAndTrainModels" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Judgements" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestNDCG.testNDCG" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.testSltr" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.resetFeatureStoreAndTrainModels" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Judgements" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestNDCG.testNDCG" />
+      <item index="4" class="java.lang.String" itemvalue="Application.RankLibModel" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TestNDCG.testNDCG" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Judgements" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.testSltr" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.resetFeatureStoreAndTrainModels" />
-        <item index="4" class="java.lang.String" itemvalue="Application.LogQuerySearchRequest" />
+        <item index="0" class="java.lang.String" itemvalue="Application.RankLibModel" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestNDCG.testNDCG" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Judgements" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.testSltr" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestSltrQuery.resetFeatureStoreAndTrainModels" />
       </list>
     </recent_temporary>
   </component>
@@ -528,12 +536,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32791877" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2247191" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2247191" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -551,7 +560,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32791877" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -764,6 +772,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -861,19 +870,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="37" column="58" lean-forward="false" selection-start-line="37" selection-start-column="58" selection-end-line="37" selection-end-column="58" />
+        <state relative-caret-position="315">
+          <caret line="297" column="17" lean-forward="false" selection-start-line="297" selection-start-column="17" selection-end-line="297" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="288" column="100" lean-forward="false" selection-start-line="288" selection-start-column="100" selection-end-line="288" selection-end-column="100" />
-          <folding />
+        <state relative-caret-position="795">
+          <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+          <folding>
+            <marker date="1514284889000" expanded="false" signature="560:571" ph=" { " />
+            <marker date="1514284889000" expanded="false" signature="583:589" ph=" }" />
+            <marker date="1514284889000" expanded="false" signature="618:629" ph=" { " />
+            <marker date="1514284889000" expanded="false" signature="642:648" ph=" }" />
+            <marker date="1514284889000" expanded="false" signature="1397:1412" ph=" { " />
+            <marker date="1514284889000" expanded="false" signature="1424:1434" ph=" }" />
+            <marker date="1514284889000" expanded="false" signature="1473:1488" ph=" { " />
+            <marker date="1514284889000" expanded="false" signature="1506:1516" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>

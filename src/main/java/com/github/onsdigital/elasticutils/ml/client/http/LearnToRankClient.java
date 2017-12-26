@@ -292,12 +292,10 @@ public class LearnToRankClient implements AutoCloseable {
         return LearnToRankListResponse.fromResponse(response, new TypeReference<LearnToRankListResponse<RankLibModel>>(){});
     }
 
-    public LearnToRankGetResponse<RankLibModel> getModel(String featureStore, String name) throws IOException {
+    public Response getModel(String featureStore, String name) throws IOException {
         String api = endpoint(EndPoint.LTR.getEndPoint(), featureStore, EndPoint.MODEL.getEndPoint(), name);
 
-        Response response = this.get(api, Collections.emptyMap());
-        String entity = EntityUtils.toString(response.getEntity());
-        return JsonUtils.MAPPER.readValue(entity, new TypeReference<LearnToRankGetResponse<RankLibModel>>(){});
+        return this.get(api, Collections.emptyMap());
     }
 
     public Response createModel(String featureStore, String featureSet, RankLibModel model) throws IOException {
