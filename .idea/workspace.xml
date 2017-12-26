@@ -26,20 +26,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LearnToRankClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="297" column="17" lean-forward="false" selection-start-line="297" selection-start-column="17" selection-end-line="297" selection-end-column="17" />
+            <state relative-caret-position="133">
+              <caret line="288" column="7" lean-forward="false" selection-start-line="288" selection-start-column="7" selection-end-line="288" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RankLibModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RankLibModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
+            <state relative-caret-position="513">
               <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
               <folding>
                 <marker date="1514284889000" expanded="false" signature="560:571" ph=" { " />
@@ -102,6 +102,7 @@
       <find>cache</find>
       <find>CLEAR</find>
       <find>clearCache</find>
+      <find>catch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,8 +165,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgement.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Judgements.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/Runner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java" />
       </list>
     </option>
   </component>
@@ -221,6 +222,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-elasticutils-ltr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dp-elasticutils-ltr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ml" type="462c0819:PsiDirectoryNode" />
+              <item name="requests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dp-elasticutils-ltr" type="b2602c69:ProjectViewProjectNode" />
@@ -632,13 +650,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/ranklib/ModelHit.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/Model.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/response/LearnToRankResponse.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/util/ResponseUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -870,17 +881,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/requests/FeatureSetRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="297" column="17" lean-forward="false" selection-start-line="297" selection-start-column="17" selection-end-line="297" selection-end-column="17" />
+        <state relative-caret-position="90">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/ranklib/models/RankLibModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
+        <state relative-caret-position="513">
           <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
           <folding>
             <marker date="1514284889000" expanded="false" signature="560:571" ph=" { " />
@@ -892,6 +903,14 @@
             <marker date="1514284889000" expanded="false" signature="1473:1488" ph=" { " />
             <marker date="1514284889000" expanded="false" signature="1506:1516" ph=" }" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigital/elasticutils/ml/client/http/LearnToRankClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="288" column="7" lean-forward="false" selection-start-line="288" selection-start-column="7" selection-end-line="288" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -292,6 +292,15 @@ public class LearnToRankClient implements AutoCloseable {
         return LearnToRankListResponse.fromResponse(response, new TypeReference<LearnToRankListResponse<RankLibModel>>(){});
     }
 
+    public boolean modelExists(String featureStore, String name) throws IOException {
+        try {
+            Response response = this.getModel(featureStore, name);
+            return response.getStatusLine().getStatusCode() == HttpStatus.SC_OK;
+        } catch (ResponseException e) {
+            return false;
+        }
+    }
+
     public Response getModel(String featureStore, String name) throws IOException {
         String api = endpoint(EndPoint.LTR.getEndPoint(), featureStore, EndPoint.MODEL.getEndPoint(), name);
 
