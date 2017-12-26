@@ -57,7 +57,7 @@ public class Runner {
     }
 
     private static String getPathToRankLib() throws IOException {
-        URL url = Runner.class.getResource("/lib/RankLib-2.8.jar");
+        URL url = Thread.currentThread().getClass().getResource("/lib/RankLib-2.8.jar");
         if (url == null) {
             throw new IOException("Unable to locate RankLib-2.8.jar in the classpath");
         }

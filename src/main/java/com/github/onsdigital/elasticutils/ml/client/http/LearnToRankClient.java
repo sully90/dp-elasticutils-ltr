@@ -280,13 +280,13 @@ public class LearnToRankClient implements AutoCloseable {
      * @return org.elasticsearch.client.Response
      * @throws IOException
      */
-    public Response clearCache() throws IOException {
-        String api = endpoint(EndPoint.LTR, EndPoint.CLEAR_CACHE);
+    public Response clearCache(String featureStore) throws IOException {
+        String api = endpoint(EndPoint.LTR.getEndPoint(), featureStore, EndPoint.CLEAR_CACHE.getEndPoint());
         return this.post(api, Collections.emptyMap());
     }
 
     public LearnToRankListResponse<RankLibModel> listModels(String featureStore) throws IOException {
-        String api = endpoint(EndPoint.LTR, EndPoint.MODEL);
+        String api = endpoint(EndPoint.LTR.getEndPoint(), featureStore, EndPoint.MODEL.getEndPoint());
 
         Response response = this.get(api, Collections.emptyMap());
         return LearnToRankListResponse.fromResponse(response, new TypeReference<LearnToRankListResponse<RankLibModel>>(){});
