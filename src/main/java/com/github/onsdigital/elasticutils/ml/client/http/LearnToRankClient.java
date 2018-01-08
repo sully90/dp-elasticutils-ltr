@@ -10,6 +10,7 @@ import com.github.onsdigital.elasticutils.ml.ranklib.models.RankLibModel;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
+import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
@@ -122,6 +123,29 @@ public class LearnToRankClient implements AutoCloseable {
     }
 
     // FEATURES //
+
+    /**
+     *
+     * @return String array of all available feature stores
+     * @throws IOException
+     */
+    public Set<String> listFeatureStores() throws IOException {
+        String api = endpoint(EndPoint.LTR);
+        Map<String, String> params = Collections.EMPTY_MAP;
+
+        Response response = this.get(api, params);
+        String entity = EntityUtils.toString(response.getEntity());
+
+        Map<String, Object> responseMap = JsonUtils.MAPPER.readValue(entity, new TypeReference<Map<String, Object>>(){});
+        if (responseMap.containsKey("stores") && responseMap.get("stores") instanceof Map) {
+            Map<String, Object> storeMap = (Map<String, Object>) responseMap.get("stores");
+            // Keys are the feature stores
+            return storeMap.keySet();
+        } else {
+            // No feature stores
+            return new HashSet<>();
+        }
+    }
 
     /**
      * Check whether the feature store has been initialised
@@ -464,6 +488,18 @@ public class LearnToRankClient implements AutoCloseable {
             } catch (Exception e) {
                 LOGGER.error("Failed to shut down LearnToRankClient.", e);
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        try (LearnToRankClient client = LearnToRankHelper.getLTRClient("localhost")) {
+            Set<String> featureStores = client.listFeatureStores();
+
+            for (String featureStore : featureStores) {
+                System.out.println(featureStore);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
