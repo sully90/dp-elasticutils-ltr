@@ -8,7 +8,6 @@ import com.github.onsdigital.elasticutils.ml.util.JsonSerializable;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.TermsQueryBuilder;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -103,28 +102,5 @@ public class LogQuerySearchRequest implements JsonSerializable {
                 .filter(sltrQueryBuilder);
         LogSpecs logSpecs = LogSpecs.fromQuery("log_entry", sltrQueryBuilder);
         return new LogQuerySearchRequest(qb, logSpecs);
-    }
-
-    public static void main(String[] args) {
-        TermsQueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("_id", "7555", "1370", "1369");
-
-        String store = "test_featurestore";
-        SltrQueryBuilder loggingQueryBuilder = new SltrQueryBuilder("logged_featureset", "movie_features");
-        loggingQueryBuilder.setStore(store);
-        loggingQueryBuilder.setParam("keywords", "rambo");
-
-        LogSpecs logSpecs = new LogSpecs("log_entry", "logged_featureset");
-
-        QueryBuilder qb = QueryBuilders.boolQuery()
-                .filter(termsQueryBuilder)
-                .filter(loggingQueryBuilder);
-
-        LogQuerySearchRequest searchRequest = new LogQuerySearchRequest(qb, logSpecs);
-
-        try {
-            System.out.println(searchRequest.toJson());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

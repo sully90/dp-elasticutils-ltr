@@ -1,6 +1,5 @@
 package com.github.onsdigital.elasticutils.ml.ranklib.models;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -116,13 +115,6 @@ public class Judgements {
             idealDiscountedCumulativeGain[i] = total; // Compute cumulativeIdealDiscountedGain
         }
         return idealDiscountedCumulativeGain;
-    }
-
-    public static void main(String[] args) {
-        int num = 4;
-        float[] idealJudgements = Judgements.idealJudgement(num);
-
-        System.out.println(Arrays.toString(idealJudgements));
     }
 
 }

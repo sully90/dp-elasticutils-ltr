@@ -10,7 +10,6 @@ import com.github.onsdigital.elasticutils.ml.ranklib.models.RankLibModel;
 import com.github.onsdigital.elasticutils.ml.requests.FeatureSetRequest;
 import com.github.onsdigital.elasticutils.ml.requests.LogQuerySearchRequest;
 import com.github.onsdigital.elasticutils.ml.util.JsonUtils;
-import com.github.onsdigital.elasticutils.ml.util.LearnToRankHelper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
@@ -488,18 +487,6 @@ public class LearnToRankClient implements AutoCloseable {
             } catch (Exception e) {
                 LOGGER.error("Failed to shut down LearnToRankClient.", e);
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        try (LearnToRankClient client = LearnToRankHelper.getLTRClient("localhost")) {
-            Set<String> featureStores = client.listFeatureStores();
-
-            for (String featureStore : featureStores) {
-                System.out.println(featureStore);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
