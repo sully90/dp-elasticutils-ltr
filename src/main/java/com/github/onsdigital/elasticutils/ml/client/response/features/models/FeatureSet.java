@@ -94,8 +94,10 @@ public class FeatureSet {
 
         File[] files = directory.listFiles(File::isFile);
         for (File file : files) {
-            Feature feature = Feature.fromJsonFile(file);
-            features.add(feature);
+            if (file.getName().endsWith(".json")) {
+                Feature feature = Feature.fromJsonFile(file);
+                features.add(feature);
+            }
         }
 
         return new FeatureSet(name, features);
