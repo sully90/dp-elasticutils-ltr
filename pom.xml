@@ -26,6 +26,12 @@
             <artifactId>dp-elasticutils</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.o19s.es</groupId>
+            <artifactId>ltr</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
