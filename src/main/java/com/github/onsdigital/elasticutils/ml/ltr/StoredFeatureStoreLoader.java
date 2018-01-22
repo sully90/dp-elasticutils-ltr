@@ -10,6 +10,13 @@ import org.elasticsearch.client.Client;
  * @project dp-elasticutils-ltr
  */
 public class StoredFeatureStoreLoader implements FeatureStoreLoader {
+
+    private final String elasticHost;
+
+    public StoredFeatureStoreLoader(String elasticHost) {
+        this.elasticHost = elasticHost;
+    }
+
     @Override
     public FeatureStore load(String storeName, Client client) {
         String api = String.format("/_ltr/%s", storeName);
@@ -19,7 +26,7 @@ public class StoredFeatureStoreLoader implements FeatureStoreLoader {
                 .get();
 
         if (getResponse.isExists()) {
-            return new StoredFeatureStore(storeName);
+            return new StoredFeatureStore(storeName, this.elasticHost);
         } else {
             return null;
         }

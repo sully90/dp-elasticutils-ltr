@@ -29,9 +29,11 @@ public class StoredFeatureStore implements FeatureStore {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private final String name;
+    private final String elasticHost;
 
-    public StoredFeatureStore(String name) {
+    public StoredFeatureStore(String name, String elasticHost) {
         this.name = name;
+        this.elasticHost = elasticHost;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class StoredFeatureStore implements FeatureStore {
 
     @Override
     public Feature load(String feature) throws IOException {
-        try (LearnToRankClient client = LearnToRankHelper.getLTRClient("localhost")) {
+        try (LearnToRankClient client = LearnToRankHelper.getLTRClient(this.elasticHost)) {
             LearnToRankListResponse<FeatureSetRequest> response = client.listFeatureSets(this.name);
 
             for (LearnToRankHit<FeatureSetRequest> hit : response.getHits().getHits()) {
@@ -60,7 +62,7 @@ public class StoredFeatureStore implements FeatureStore {
     @Override
     public FeatureSet loadSet(String featureSet) throws IOException {
         // Check if feature set exists
-        try (LearnToRankClient learnToRankClient = LearnToRankHelper.getLTRClient("localhost")) {
+        try (LearnToRankClient learnToRankClient = LearnToRankHelper.getLTRClient(this.elasticHost)) {
             if (learnToRankClient.featureSetExists(this.name, featureSet)) {
                 LearnToRankGetResponse<FeatureSetRequest> response = learnToRankClient.getFeatureSet(this.name, featureSet);
                 FeatureSetRequest featureSetRequest = response.getSource();
