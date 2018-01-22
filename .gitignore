@@ -1,3 +1,4 @@
+.idea/
 target/
 src/test/resources/ml-20m*
 src/test/resources/tmdb.json
