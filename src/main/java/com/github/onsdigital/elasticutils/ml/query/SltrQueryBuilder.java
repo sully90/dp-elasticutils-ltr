@@ -28,7 +28,7 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
 
     private final String name;
     private final String featureset;
-    private final Map<String, String> params;
+    private Map<String, Object> params;
 
     private String store;
 
@@ -40,7 +40,7 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
         this(name, store, featureset, new LinkedHashMap<>());
     }
 
-    public SltrQueryBuilder(String name, String store, String featureset, Map<String, String> params) {
+    public SltrQueryBuilder(String name, String store, String featureset, Map<String, Object> params) {
         this.name = name;
         this.store = store;
         this.featureset = featureset;
@@ -51,8 +51,12 @@ public class SltrQueryBuilder extends AbstractQueryBuilder<SltrQueryBuilder> {
         return this.name;
     }
 
-    public void setParam(String key, String value) {
+    public void setParam(String key, Object value) {
         this.params.put(key, value);
+    }
+
+    public void setParams(Map<String, Object> params) {
+        this.params = params;
     }
 
     public String getStore() {
